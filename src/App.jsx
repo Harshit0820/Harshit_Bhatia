@@ -688,6 +688,206 @@ const learningTopics = [
     title: "AWS cost-aware architecture",
     summary: "Using rightsizing, autoscaling, storage tiers, data-transfer analysis, Savings Plans, and unit economics to optimize spend without reducing reliability.",
   },
+  {
+    category: "SYSTEM DESIGN",
+    title: "CQRS and materialized views",
+    summary: "Separating write models from query-optimized views when product reads need different scale, shape, or latency than transactional updates.",
+  },
+  {
+    category: "SYSTEM DESIGN",
+    title: "Probabilistic data structures",
+    summary: "Using Bloom filters, HyperLogLog, and sketches to answer large-scale membership and counting questions with controlled memory and accuracy trade-offs.",
+  },
+  {
+    category: "SYSTEM DESIGN",
+    title: "Geo-routing and traffic steering",
+    summary: "Directing users by latency, health, residency, and capacity while planning failover behavior when regions or network paths become unavailable.",
+  },
+  {
+    category: "SYSTEM DESIGN",
+    title: "Service discovery and health",
+    summary: "Combining registration, health checks, load balancing, connection draining, and failure detection so traffic reaches only ready service instances.",
+  },
+  {
+    category: "SYSTEM DESIGN",
+    title: "Data archival and tiering",
+    summary: "Moving aging data across hot, warm, cold, and deleted states while preserving compliance, searchability, restoration, and predictable storage cost.",
+  },
+  {
+    category: "BACKEND",
+    title: "Domain-driven service boundaries",
+    summary: "Using business capabilities, aggregates, invariants, and ownership to create modules that evolve independently without leaking internal data models.",
+  },
+  {
+    category: "BACKEND",
+    title: "Transaction isolation in practice",
+    summary: "Understanding locks, MVCC, anomalies, deadlocks, and retry behavior when selecting isolation levels for correctness under concurrent workloads.",
+  },
+  {
+    category: "BACKEND",
+    title: "Reactive versus blocking services",
+    summary: "Choosing concurrency models from workload evidence, team experience, debugging needs, and resource constraints rather than framework popularity.",
+  },
+  {
+    category: "BACKEND",
+    title: "Idempotency across service boundaries",
+    summary: "Carrying stable operation identifiers through APIs, queues, and databases so retries remain safe across every step of a distributed workflow.",
+  },
+  {
+    category: "BACKEND",
+    title: "Secure webhook delivery",
+    summary: "Designing signatures, replay protection, retry schedules, event ordering, endpoint verification, and delivery logs for trustworthy external integrations.",
+  },
+  {
+    category: "FULL STACK",
+    title: "Multi-channel notification systems",
+    summary: "Coordinating in-app, email, push, and messaging preferences with templates, delivery tracking, deduplication, and respectful frequency controls.",
+  },
+  {
+    category: "FULL STACK",
+    title: "Permissions users can understand",
+    summary: "Aligning backend authorization with clear interface states, explanations, request-access flows, and administrative controls that avoid security confusion.",
+  },
+  {
+    category: "FULL STACK",
+    title: "Safe bulk operations",
+    summary: "Designing previews, validation, partial success, asynchronous execution, progress, cancellation, and downloadable results for high-volume user actions.",
+  },
+  {
+    category: "FULL STACK",
+    title: "Long-running workflow engines",
+    summary: "Modeling approvals, waiting states, retries, deadlines, human tasks, and history so business processes survive restarts and organizational complexity.",
+  },
+  {
+    category: "FULL STACK",
+    title: "Cross-system data reconciliation",
+    summary: "Detecting mismatches with source-of-truth rules, checksums, reports, repair jobs, and audit evidence when multiple systems represent the same entity.",
+  },
+  {
+    category: "FRONTEND",
+    title: "JavaScript performance budgets",
+    summary: "Setting limits for bundles, third-party code, route loading, and runtime work so performance remains protected as product features accumulate.",
+  },
+  {
+    category: "FRONTEND",
+    title: "Error boundaries and recovery UX",
+    summary: "Containing interface failures, preserving user work, reporting useful diagnostics, and offering targeted recovery instead of blank or broken screens.",
+  },
+  {
+    category: "FRONTEND",
+    title: "URL state and deep linking",
+    summary: "Representing navigation, filters, selections, and workflow steps in durable URLs users can bookmark, share, refresh, and revisit safely.",
+  },
+  {
+    category: "FRONTEND",
+    title: "Responsible data visualization",
+    summary: "Choosing accessible charts, scales, labels, interaction, and progressive detail that help users make decisions without distorting the underlying data.",
+  },
+  {
+    category: "FRONTEND",
+    title: "Cross-tab browser coordination",
+    summary: "Using BroadcastChannel, storage events, and shared workers to synchronize sessions, notifications, and state without creating loops or stale behavior.",
+  },
+  {
+    category: "DEVOPS",
+    title: "Deployment strategy selection",
+    summary: "Choosing rolling, blue-green, canary, or feature-based release methods from rollback needs, database compatibility, cost, and user risk.",
+  },
+  {
+    category: "DEVOPS",
+    title: "Policy as code",
+    summary: "Encoding security, cost, networking, and compliance rules into versioned automated checks that give teams fast feedback before deployment.",
+  },
+  {
+    category: "DEVOPS",
+    title: "Log pipelines and retention",
+    summary: "Structuring, redacting, routing, sampling, indexing, and expiring logs so investigations remain effective without uncontrolled cost or sensitive-data exposure.",
+  },
+  {
+    category: "DEVOPS",
+    title: "Service catalogs and ownership",
+    summary: "Maintaining discoverable owners, dependencies, documentation, SLOs, runbooks, and lifecycle status so engineers can operate a growing platform confidently.",
+  },
+  {
+    category: "DEVOPS",
+    title: "Automated recovery runbooks",
+    summary: "Turning safe diagnostic and remediation steps into tested automation with approval gates, audit logs, limits, and clear human override.",
+  },
+  {
+    category: "AI ENGINEERING",
+    title: "Structured AI outputs",
+    summary: "Using schemas, constrained decoding, validation, retries, and typed tool calls so model responses can participate safely in software workflows.",
+  },
+  {
+    category: "AI ENGINEERING",
+    title: "Synthetic data with quality controls",
+    summary: "Generating representative training and evaluation examples while measuring realism, coverage, bias, privacy, and contamination against real requirements.",
+  },
+  {
+    category: "AI ENGINEERING",
+    title: "AI privacy and data residency",
+    summary: "Controlling prompts, retention, model providers, regions, encryption, redaction, and consent when enterprise information reaches AI systems.",
+  },
+  {
+    category: "AI ENGINEERING",
+    title: "Online evaluation and experiments",
+    summary: "Combining offline benchmarks with guarded production tests, user outcomes, quality review, and rollback thresholds before scaling an AI change.",
+  },
+  {
+    category: "AI ENGINEERING",
+    title: "Small language models",
+    summary: "Evaluating compact specialized models for lower latency, private deployment, predictable cost, and focused tasks that do not require frontier-scale reasoning.",
+  },
+  {
+    category: "AWS",
+    title: "Aurora and RDS reliability",
+    summary: "Planning engines, replicas, failover, backups, connection management, maintenance, and performance insights for dependable managed relational databases.",
+  },
+  {
+    category: "AWS",
+    title: "S3 data lifecycle architecture",
+    summary: "Designing prefixes, versioning, encryption, lifecycle rules, replication, event notifications, and access controls for durable object storage.",
+  },
+  {
+    category: "AWS",
+    title: "VPC networking foundations",
+    summary: "Understanding subnets, route tables, NAT, endpoints, security groups, transit connectivity, DNS, and flow logs for secure service communication.",
+  },
+  {
+    category: "AWS",
+    title: "KMS and encryption design",
+    summary: "Choosing key ownership, policies, grants, rotation, envelope encryption, and audit controls for data protected across AWS services.",
+  },
+  {
+    category: "AWS",
+    title: "Cognito and federated identity",
+    summary: "Connecting enterprise identity providers, tokens, user pools, MFA, claims, and application authorization without confusing authentication with permissions.",
+  },
+  {
+    category: "AWS",
+    title: "Kinesis and MSK streaming",
+    summary: "Selecting managed streams or Kafka by throughput, ordering, retention, consumer behavior, ecosystem needs, and operational ownership.",
+  },
+  {
+    category: "AWS",
+    title: "ElastiCache production patterns",
+    summary: "Planning Redis topology, failover, cluster mode, eviction, persistence, connection handling, and cache behavior during partial failure.",
+  },
+  {
+    category: "AWS",
+    title: "Route 53 and Global Accelerator",
+    summary: "Comparing DNS and anycast traffic steering for health-based routing, low-latency access, static entry points, and regional recovery.",
+  },
+  {
+    category: "AWS",
+    title: "AWS backup and recovery",
+    summary: "Defining cross-account backups, vault controls, retention, restore testing, recovery objectives, and regional copies for critical workloads.",
+  },
+  {
+    category: "AWS",
+    title: "Serverless event architecture",
+    summary: "Combining Lambda, EventBridge, SQS, Step Functions, and idempotent handlers while controlling concurrency, failure destinations, observability, and cost.",
+  },
 ];
 
 const learningTrackContext = {
@@ -935,6 +1135,7 @@ function App() {
   const cursorRef = useRef(null);
   const cursorRingRef = useRef(null);
   const learningTouchStartRef = useRef(null);
+  const learningTopicInitializedRef = useRef(false);
 
   useEffect(() => {
     const timer = window.setTimeout(() => setLoading(false), 3900);
@@ -989,7 +1190,44 @@ function App() {
 
   useEffect(() => {
     localStorage.setItem("learning-topic-index", String(topicIndex));
-    localStorage.removeItem("learning-topic-updated");
+    if (learningTopicInitializedRef.current) {
+      localStorage.setItem("learning-topic-updated", String(Date.now()));
+    } else {
+      learningTopicInitializedRef.current = true;
+      if (!localStorage.getItem("learning-topic-updated")) {
+        localStorage.setItem("learning-topic-updated", String(Date.now()));
+      }
+    }
+  }, [topicIndex]);
+
+  useEffect(() => {
+    const desktopQuery = window.matchMedia("(min-width: 641px)");
+    const topicDuration = 6 * 60 * 60 * 1000;
+    let rotation;
+
+    const advanceTopic = () => {
+      setTopicIndex((index) => (index + 1) % learningTopics.length);
+    };
+
+    const scheduleRotation = () => {
+      window.clearTimeout(rotation);
+      if (!desktopQuery.matches) return;
+
+      const savedAt = Number(localStorage.getItem("learning-topic-updated") || Date.now());
+      const elapsed = Math.max(0, Date.now() - savedAt);
+      if (elapsed >= topicDuration) {
+        rotation = window.setTimeout(advanceTopic, 0);
+        return;
+      }
+      rotation = window.setTimeout(advanceTopic, topicDuration - elapsed);
+    };
+
+    scheduleRotation();
+    desktopQuery.addEventListener("change", scheduleRotation);
+    return () => {
+      window.clearTimeout(rotation);
+      desktopQuery.removeEventListener("change", scheduleRotation);
+    };
   }, [topicIndex]);
 
   useEffect(() => {
@@ -1070,10 +1308,12 @@ function App() {
   };
 
   const handleLearningTouchStart = (event) => {
+    if (!window.matchMedia("(max-width: 640px)").matches) return;
     learningTouchStartRef.current = event.touches[0].clientX;
   };
 
   const handleLearningTouchEnd = (event) => {
+    if (!window.matchMedia("(max-width: 640px)").matches) return;
     if (learningTouchStartRef.current === null) return;
     const distance = event.changedTouches[0].clientX - learningTouchStartRef.current;
     learningTouchStartRef.current = null;
@@ -1256,22 +1496,6 @@ function App() {
                     {learningTrackContext[learningTopics[topicIndex].category]}
                   </em>
                 </span>
-                <div className="learning-controls" aria-label="Browse learning topics">
-                  <button
-                    type="button"
-                    aria-label="Previous learning topic"
-                    onClick={() => changeLearningTopic(-1)}
-                  >
-                    ‹
-                  </button>
-                  <button
-                    type="button"
-                    aria-label="Next learning topic"
-                    onClick={() => changeLearningTopic(1)}
-                  >
-                    ›
-                  </button>
-                </div>
               </div>
             </div>
           </div>
@@ -2464,37 +2688,6 @@ const styles = `
 
   .learning-copy {
     animation: learning-copy-in .28s ease both;
-  }
-
-  .learning-controls {
-    z-index: 1;
-    display: flex;
-    align-items: center;
-    flex: 0 0 auto;
-    gap: 4px;
-    margin-left: auto;
-  }
-
-  .learning-controls button {
-    display: grid;
-    place-items: center;
-    width: 27px;
-    height: 27px;
-    padding: 0;
-    border: 1px solid var(--line);
-    border-radius: 50%;
-    color: var(--text);
-    background: var(--surface-2);
-    font-size: 20px;
-    line-height: 1;
-    cursor: pointer;
-    transition: border-color .2s ease, background .2s ease, transform .2s ease;
-  }
-
-  .learning-controls button:hover {
-    border-color: var(--blue);
-    background: rgba(138,180,248,.12);
-    transform: translateY(-1px);
   }
 
   @keyframes learning-copy-in {
@@ -3953,7 +4146,6 @@ const styles = `
       white-space: normal;
       -webkit-line-clamp: unset;
     }
-    .learning-controls { display: none; }
     .impact-strip { grid-template-columns: 1fr 1fr; gap: 18px 10px; padding: 22px 18px; }
     .impact-strip > i { display: none; }
     .impact-strip strong { font-size: 21px; }
