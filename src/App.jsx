@@ -2954,33 +2954,67 @@ const styles = `
     --section-orbit-color: var(--yellow);
     --section-orbit-width: 230px;
     --section-orbit-height: 82px;
-    --section-orbit-top: 42px;
+    --section-orbit-top: 18px;
+    --section-orbit-right: 54px;
     --section-orbit-rotate: 7deg;
+    --section-dot-top: 49px;
+    --section-dot-right: 30px;
+    --section-dot-size: 34px;
+  }
+
+  #experience {
+    --section-orbit-width: 202px;
+    --section-orbit-height: 68px;
+    --section-orbit-top: 92px;
+    --section-orbit-right: 34px;
+    --section-orbit-rotate: -7deg;
+    --section-dot-top: 137px;
+    --section-dot-right: 196px;
+    --section-dot-size: 48px;
   }
 
   #work {
     --section-orbit-color: var(--red);
     --section-orbit-width: 124px;
     --section-orbit-height: 124px;
+    --section-orbit-top: 78px;
+    --section-orbit-right: 52px;
     --section-orbit-radius: 50%;
     --section-orbit-rotate: 0deg;
-    --section-dot-right: 118px;
+    --section-dot-top: 171px;
+    --section-dot-right: 22px;
+    --section-dot-size: 36px;
   }
 
   #skills {
     --section-orbit-color: var(--green);
     --section-orbit-width: 220px;
     --section-orbit-height: 54px;
+    --section-orbit-top: 104px;
+    --section-orbit-right: 28px;
     --section-orbit-rotate: 5deg;
+    --section-dot-top: 73px;
+    --section-dot-right: 58px;
+    --section-dot-size: 40px;
   }
 
   #education {
     --section-orbit-color: var(--yellow);
     --section-orbit-width: 158px;
     --section-orbit-height: 78px;
+    --section-orbit-top: 88px;
+    --section-orbit-right: 22px;
     --section-orbit-radius: 46px 999px 999px 999px;
     --section-orbit-rotate: -6deg;
+    --section-dot-top: 151px;
+    --section-dot-right: 158px;
+    --section-dot-size: 34px;
   }
+
+  #experience::before, #experience::after { animation-delay: -1.5s; }
+  #work::before, #work::after { animation-delay: -3.2s; }
+  #skills::before, #skills::after { animation-delay: -4.7s; }
+  #education::before, #education::after { animation-delay: -2.4s; }
 
   @keyframes section-orbit-drift {
     50% { translate: -7px 6px; }
@@ -4170,6 +4204,19 @@ const styles = `
 
   @media (max-width: 860px) {
     .cursor-dot, .cursor-ring, .mouse-glow { display: none; }
+    #assistant::before,
+    #experience::before,
+    #work::before,
+    #skills::before,
+    #education::before,
+    #assistant::after,
+    #experience::after,
+    #work::after,
+    #skills::after,
+    #education::after {
+      scale: .84;
+      transform-origin: right top;
+    }
     .topbar { grid-template-columns: auto 1fr auto; padding-left: 16px; }
     .topbar nav { justify-self: center; }
     .topbar nav button { padding: 9px 8px; font-size: 10px; }
@@ -4220,6 +4267,30 @@ const styles = `
     body { padding-bottom: calc(74px + env(safe-area-inset-bottom)); }
     .section-shell { width: min(100% - 24px, 1180px); }
     .content-section, .assistant-section, .contact-section { padding-top: 58px; scroll-margin-top: 70px; }
+    #assistant::before,
+    #experience::before,
+    #work::before,
+    #skills::before,
+    #education::before,
+    #assistant::after,
+    #experience::after,
+    #work::after,
+    #skills::after,
+    #education::after {
+      display: block;
+      scale: .52;
+      transform-origin: right top;
+    }
+    #assistant::before { top: 19px; right: -16px; }
+    #assistant::after { top: 48px; right: 28px; }
+    #experience::before { top: 30px; right: -18px; }
+    #experience::after { top: 61px; right: 72px; }
+    #work::before { top: 27px; right: 2px; }
+    #work::after { top: 78px; right: 12px; }
+    #skills::before { top: 34px; right: -22px; }
+    #skills::after { top: 23px; right: 40px; }
+    #education::before { top: 30px; right: -8px; }
+    #education::after { top: 66px; right: 72px; }
 
     .topbar {
       top: 10px;
@@ -4384,16 +4455,6 @@ const styles = `
     .impact-strip span { font-size: 11px; text-align: center; }
     .section-heading { margin-bottom: 20px; }
     .section-heading h2 { font-size: 40px; }
-    #assistant::before,
-    #experience::before,
-    #work::before,
-    #skills::before,
-    #education::before { scale: .72; transform-origin: right top; }
-    #assistant::after,
-    #experience::after,
-    #work::after,
-    #skills::after,
-    #education::after { scale: .72; transform-origin: center; }
     .timeline, .earlier-grid, .project-grid, .skills-grid { gap: 10px; }
     .job-card { grid-template-columns: 1fr; gap: 13px; padding: 18px; border-radius: 23px; }
     .job-card__meta, .job-card__content { grid-column: 1; }
