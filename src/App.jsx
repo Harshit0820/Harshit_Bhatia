@@ -2014,6 +2014,9 @@ const styles = `
   html {
     scroll-behavior: smooth;
     scrollbar-color: #55585f var(--bg);
+    max-width: 100%;
+    overflow-x: hidden;
+    overflow-x: clip;
   }
 
   body {
@@ -2024,6 +2027,13 @@ const styles = `
       radial-gradient(circle at 15% 0%, rgba(138, 180, 248, 0.08), transparent 32rem),
       var(--bg);
     overflow-x: hidden;
+    overflow-x: clip;
+  }
+
+  #root {
+    max-width: 100%;
+    overflow-x: hidden;
+    overflow-x: clip;
   }
 
   body::before {
@@ -4267,6 +4277,10 @@ const styles = `
     body { padding-bottom: calc(74px + env(safe-area-inset-bottom)); }
     .section-shell { width: min(100% - 24px, 1180px); }
     .content-section, .assistant-section, .contact-section { padding-top: 58px; scroll-margin-top: 70px; }
+    #assistant, #experience, #work, #skills, #education {
+      overflow-x: hidden;
+      overflow-x: clip;
+    }
     #assistant::before,
     #experience::before,
     #work::before,
