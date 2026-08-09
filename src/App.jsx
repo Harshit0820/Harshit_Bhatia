@@ -907,6 +907,67 @@ const learningTrackContext = {
     "AWS knowledge creates business impact when cloud services are selected deliberately, secured by default, observable in production, and operated at a sustainable cost.",
 };
 
+function createMixedLearningOrder() {
+  const groupedTopics = learningTopics.reduce((groups, topic, index) => {
+    if (!groups[topic.category]) groups[topic.category] = [];
+    groups[topic.category].push(index);
+    return groups;
+  }, {});
+  const shuffle = (items) => {
+    const result = [...items];
+    for (let index = result.length - 1; index > 0; index -= 1) {
+      const randomIndex = Math.floor(Math.random() * (index + 1));
+      [result[index], result[randomIndex]] = [result[randomIndex], result[index]];
+    }
+    return result;
+  };
+
+  Object.keys(groupedTopics).forEach((category) => {
+    groupedTopics[category] = shuffle(groupedTopics[category]);
+  });
+
+  const order = [];
+  let previousCategory = null;
+  while (order.length < learningTopics.length) {
+    const availableCategories = shuffle(
+      Object.keys(groupedTopics).filter((category) => groupedTopics[category].length > 0),
+    );
+    if (availableCategories.length > 1 && availableCategories[0] === previousCategory) {
+      [availableCategories[0], availableCategories[1]] = [
+        availableCategories[1],
+        availableCategories[0],
+      ];
+    }
+    availableCategories.forEach((category) => {
+      order.push(groupedTopics[category].pop());
+      previousCategory = category;
+    });
+  }
+
+  const firstCategory = learningTopics[order[0]].category;
+  const lastCategory = learningTopics[order[order.length - 1]].category;
+  if (firstCategory === lastCategory) {
+    const penultimateCategory = learningTopics[order[order.length - 2]].category;
+    const swapIndex = order.findIndex((topicIndex, index) => {
+      if (index === 0 || index >= order.length - 1) return false;
+      const category = learningTopics[topicIndex].category;
+      return (
+        category !== firstCategory &&
+        category !== penultimateCategory &&
+        learningTopics[order[index - 1]].category !== firstCategory &&
+        learningTopics[order[index + 1]].category !== firstCategory
+      );
+    });
+    if (swapIndex > 0) {
+      [order[swapIndex], order[order.length - 1]] = [
+        order[order.length - 1],
+        order[swapIndex],
+      ];
+    }
+  }
+  return order;
+}
+
 const greetings = [
   { text: "Hello", code: "EN" },
   { text: "Namaste", code: "HI" },
@@ -1121,11 +1182,29 @@ function App() {
   const [scrollProgress, setScrollProgress] = useState(0);
   const [theme, setTheme] = useState(() => localStorage.getItem("portfolio-theme") || "dark");
   const [songIndex, setSongIndex] = useState(() => Math.floor(Math.random() * songs.length));
+  const [learningOrder] = useState(() => {
+    try {
+      const savedOrder = JSON.parse(localStorage.getItem("learning-topic-order"));
+      const isValidOrder =
+        Array.isArray(savedOrder) &&
+        savedOrder.length === learningTopics.length &&
+        new Set(savedOrder).size === learningTopics.length &&
+        savedOrder.every(
+          (index) => Number.isInteger(index) && index >= 0 && index < learningTopics.length,
+        );
+      if (isValidOrder) return savedOrder;
+    } catch {
+      // Create a fresh order if stored data is missing or invalid.
+    }
+    const nextOrder = createMixedLearningOrder();
+    localStorage.setItem("learning-topic-order", JSON.stringify(nextOrder));
+    return nextOrder;
+  });
   const [topicIndex, setTopicIndex] = useState(() => {
     const savedTopic = Number(localStorage.getItem("learning-topic-index"));
     return Number.isInteger(savedTopic) && savedTopic >= 0 && savedTopic < learningTopics.length
       ? savedTopic
-      : Math.floor(Math.random() * learningTopics.length);
+      : learningOrder[0];
   });
   const [istTime, setIstTime] = useState("");
   const [assistantReply, setAssistantReply] = useState(
@@ -1206,7 +1285,10 @@ function App() {
     let rotation;
 
     const advanceTopic = () => {
-      setTopicIndex((index) => (index + 1) % learningTopics.length);
+      setTopicIndex((index) => {
+        const currentPosition = learningOrder.indexOf(index);
+        return learningOrder[(currentPosition + 1) % learningOrder.length];
+      });
     };
 
     const scheduleRotation = () => {
@@ -1228,7 +1310,7 @@ function App() {
       window.clearTimeout(rotation);
       desktopQuery.removeEventListener("change", scheduleRotation);
     };
-  }, [topicIndex]);
+  }, [topicIndex, learningOrder]);
 
   useEffect(() => {
     const moveCursor = (event) => {
@@ -1304,7 +1386,12 @@ function App() {
   }, [overviewOpen]);
 
   const changeLearningTopic = (direction) => {
-    setTopicIndex((index) => (index + direction + learningTopics.length) % learningTopics.length);
+    setTopicIndex((index) => {
+      const currentPosition = learningOrder.indexOf(index);
+      const nextPosition =
+        (currentPosition + direction + learningOrder.length) % learningOrder.length;
+      return learningOrder[nextPosition];
+    });
   };
 
   const handleLearningTouchStart = (event) => {
