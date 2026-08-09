@@ -894,19 +894,6 @@ const learningTopics = learningTopicLibrary.filter(
   (topic) => ["SYSTEM DESIGN", "FRONTEND", "BACKEND", "FULL STACK", "AWS"].includes(topic.category),
 );
 
-const learningInterviewFocus = {
-  "SYSTEM DESIGN":
-    "Interview focus: define requirements, estimate scale, compare consistency and availability, identify bottlenecks, and explain failure handling, recovery, and observability.",
-  BACKEND:
-    "Interview focus: explain transaction boundaries, concurrency, API contracts, data modeling, retries, testing, performance limits, and behavior during partial failure.",
-  "FULL STACK":
-    "Interview focus: trace the request end to end, define frontend and backend responsibilities, handle security and errors, and reason about consistency and latency.",
-  FRONTEND:
-    "Interview focus: discuss rendering behavior, state ownership, browser performance, accessibility, security, test strategy, and maintainable component boundaries.",
-  AWS:
-    "Interview focus: justify service selection, design for high availability, apply least privilege and network isolation, and cover monitoring, recovery, scaling, and cost.",
-};
-
 function createMixedLearningOrder() {
   const groupedTopics = learningTopics.reduce((groups, topic, index) => {
     if (!groups[topic.category]) groups[topic.category] = [];
@@ -1577,10 +1564,7 @@ function App() {
                 <span className="learning-copy" key={topicIndex} aria-live="polite">
                   <small>CURRENTLY LEARNING · {learningTopics[topicIndex].category}</small>
                   <strong>{learningTopics[topicIndex].title}</strong>
-                  <em>
-                    {learningTopics[topicIndex].summary}{" "}
-                    {learningInterviewFocus[learningTopics[topicIndex].category]}
-                  </em>
+                  <em>{learningTopics[topicIndex].summary}</em>
                 </span>
               </div>
             </div>
