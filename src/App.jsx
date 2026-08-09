@@ -189,34 +189,523 @@ const songs = [
 
 const learningTopics = [
   {
-    title: "Consistent hashing at scale",
-    summary: "Exploring hash rings, virtual nodes, and replication to rebalance distributed caches with minimal data movement when servers change.",
+    category: "SYSTEM DESIGN",
+    title: "Multi-region data consistency",
+    summary: "Comparing quorum reads, conflict resolution, replication lag, and regional failover to keep global products available without corrupting data.",
   },
   {
-    title: "Event-driven system design",
-    summary: "Designing loosely coupled services with durable events, retries, dead-letter queues, ordering guarantees, and safe consumer failure handling.",
+    category: "SYSTEM DESIGN",
+    title: "Backpressure and graceful degradation",
+    summary: "Designing queues, rate limits, load shedding, and reduced-function modes so overloaded systems protect critical user journeys instead of collapsing.",
   },
   {
+    category: "SYSTEM DESIGN",
+    title: "Multi-tenant platform architecture",
+    summary: "Balancing tenant isolation, shared infrastructure, authorization, noisy-neighbor controls, and cost efficiency for secure enterprise platforms.",
+  },
+  {
+    category: "BACKEND",
+    title: "Transactional outbox and sagas",
+    summary: "Coordinating database changes and distributed events with outbox, compensation, retries, and idempotency instead of fragile cross-service transactions.",
+  },
+  {
+    category: "BACKEND",
+    title: "Modern Java concurrency",
+    summary: "Evaluating virtual threads, structured concurrency, thread safety, and resource limits for simpler high-throughput Spring Boot services.",
+  },
+  {
+    category: "BACKEND",
+    title: "Database performance engineering",
+    summary: "Using execution plans, indexing, connection pools, partitioning, and query-shape analysis to improve latency without hiding problems behind hardware.",
+  },
+  {
+    category: "FULL STACK",
+    title: "End-to-end observability",
+    summary: "Connecting browser telemetry, API traces, logs, metrics, and business events with OpenTelemetry to follow one user journey across the stack.",
+  },
+  {
+    category: "FULL STACK",
+    title: "Backend-for-frontend patterns",
+    summary: "Shaping APIs around product experiences while controlling aggregation, authorization, caching, versioning, and coupling between interface and services.",
+  },
+  {
+    category: "FULL STACK",
+    title: "Identity across the stack",
+    summary: "Designing OAuth, OIDC, sessions, token rotation, fine-grained authorization, and audit trails that remain secure and understandable to users.",
+  },
+  {
+    category: "FRONTEND",
+    title: "Core Web Vitals and INP",
+    summary: "Tracing long tasks, rendering work, network waterfalls, and interaction latency to make complex enterprise interfaces feel immediately responsive.",
+  },
+  {
+    category: "FRONTEND",
+    title: "Scalable state architecture",
+    summary: "Separating server state, client state, URL state, and form state to reduce synchronization bugs and keep large React products maintainable.",
+  },
+  {
+    category: "FRONTEND",
+    title: "Accessible design systems",
+    summary: "Building reusable tokens and components with keyboard support, semantic structure, focus management, and measurable accessibility across product teams.",
+  },
+  {
+    category: "DEVOPS",
+    title: "Platform engineering golden paths",
+    summary: "Creating self-service templates that standardize CI/CD, security, observability, and deployment so teams ship safely without repeated infrastructure work.",
+  },
+  {
+    category: "DEVOPS",
+    title: "GitOps and progressive delivery",
+    summary: "Using declarative environments, automated reconciliation, canaries, feature flags, and fast rollback to reduce deployment risk at enterprise scale.",
+  },
+  {
+    category: "DEVOPS",
+    title: "Software supply-chain security",
+    summary: "Applying signed artifacts, SBOMs, dependency policies, secret scanning, and least privilege to protect builds from source to production.",
+  },
+  {
+    category: "AI ENGINEERING",
+    title: "Reliable RAG evaluation",
+    summary: "Measuring retrieval quality, groundedness, latency, and answer usefulness with repeatable datasets before an AI feature reaches enterprise users.",
+  },
+  {
+    category: "AI ENGINEERING",
+    title: "Safe agentic workflows",
+    summary: "Designing tool permissions, context boundaries, human approvals, auditability, and recovery paths for agents acting on real business systems.",
+  },
+  {
+    category: "AI ENGINEERING",
+    title: "LLM observability and guardrails",
+    summary: "Monitoring prompts, cost, quality, drift, PII exposure, and prompt-injection risk so production AI remains useful, secure, and explainable.",
+  },
+  {
+    category: "SYSTEM DESIGN",
+    title: "Consistent hashing and hot partitions",
+    summary: "Using hash rings, virtual nodes, replication, and adaptive sharding to distribute traffic while detecting and relieving unevenly loaded partitions.",
+  },
+  {
+    category: "SYSTEM DESIGN",
+    title: "Event delivery guarantees",
+    summary: "Choosing between at-most-once, at-least-once, and effectively-once processing while handling ordering, deduplication, replay, and poison messages.",
+  },
+  {
+    category: "SYSTEM DESIGN",
+    title: "Rate limiting and admission control",
+    summary: "Applying token buckets, quotas, fairness, and priority lanes to protect shared platforms while preserving capacity for critical enterprise operations.",
+  },
+  {
+    category: "SYSTEM DESIGN",
+    title: "Zero-downtime data migrations",
+    summary: "Planning expand-contract schemas, dual writes, backfills, verification, and rollback so large datasets evolve without interrupting product traffic.",
+  },
+  {
+    category: "BACKEND",
+    title: "Resilience patterns in practice",
+    summary: "Combining timeouts, retries with jitter, circuit breakers, bulkheads, and fallbacks without creating retry storms or hiding persistent failures.",
+  },
+  {
+    category: "BACKEND",
+    title: "Safe API evolution",
+    summary: "Using compatibility rules, consumer contracts, versioning, deprecation telemetry, and migration plans to evolve APIs without breaking dependent teams.",
+  },
+  {
+    category: "BACKEND",
+    title: "JVM profiling and memory",
+    summary: "Reading heap behavior, garbage collection, thread dumps, and allocation profiles to diagnose latency spikes and production memory pressure.",
+  },
+  {
+    category: "BACKEND",
+    title: "Enterprise search architecture",
+    summary: "Designing indexing pipelines, relevance tuning, hybrid retrieval, access-aware filtering, and freshness controls for secure large-scale search.",
+  },
+  {
+    category: "FULL STACK",
+    title: "Feature flags and experimentation",
+    summary: "Separating deployment from release with targeted flags, measurable experiments, kill switches, cleanup policies, and trustworthy product metrics.",
+  },
+  {
+    category: "FULL STACK",
+    title: "Resilient user journeys",
+    summary: "Coordinating optimistic interfaces, retries, idempotent services, partial failure states, and recovery messages so users can safely complete tasks.",
+  },
+  {
+    category: "FULL STACK",
+    title: "Schema-driven product development",
+    summary: "Using OpenAPI, generated clients, validation, contract tests, and shared error models to keep frontend and backend delivery aligned.",
+  },
+  {
+    category: "FULL STACK",
+    title: "Modular architecture boundaries",
+    summary: "Choosing clear domains, dependency rules, and extraction points so a product can scale without prematurely becoming a distributed monolith.",
+  },
+  {
+    category: "FRONTEND",
+    title: "React concurrency and streaming",
+    summary: "Applying transitions, Suspense, streaming, and intentional loading boundaries to keep data-heavy interfaces responsive during expensive updates.",
+  },
+  {
+    category: "FRONTEND",
     title: "Browser rendering internals",
-    summary: "Studying the critical rendering path—from DOM and CSSOM creation to layout, paint, compositing, and smooth frame delivery.",
+    summary: "Understanding DOM, CSSOM, style calculation, layout, paint, compositing, and frame budgets to diagnose visual performance at its source.",
   },
   {
-    title: "Idempotent API design",
-    summary: "Using idempotency keys, deduplication, and atomic operations so network retries cannot create duplicate or inconsistent results.",
+    category: "FRONTEND",
+    title: "Frontend security engineering",
+    summary: "Preventing XSS, CSRF, unsafe dependencies, token leakage, and authorization assumptions through secure browser and API integration patterns.",
   },
   {
-    title: "Distributed caching patterns",
-    summary: "Comparing cache-aside, write-through, invalidation, TTL, and eviction strategies to reduce latency while controlling stale data.",
+    category: "FRONTEND",
+    title: "Micro-frontend governance",
+    summary: "Evaluating independent delivery, shared dependencies, design consistency, runtime isolation, and ownership costs before splitting a frontend platform.",
   },
   {
-    title: "React rendering performance",
-    summary: "Profiling unnecessary renders and improving state placement, memoization, component boundaries, code splitting, and perceived interface speed.",
+    category: "DEVOPS",
+    title: "SLOs and error budgets",
+    summary: "Turning reliability goals into measurable indicators and release decisions that balance feature velocity with the user impact of operational risk.",
   },
   {
-    title: "Database indexing strategies",
-    summary: "Reading execution plans and designing composite or covering indexes that accelerate real queries without excessive write and storage cost.",
+    category: "DEVOPS",
+    title: "Kubernetes capacity and autoscaling",
+    summary: "Tuning requests, limits, horizontal and vertical scaling, disruption budgets, and scheduling to improve reliability without wasting cloud capacity.",
+  },
+  {
+    category: "DEVOPS",
+    title: "Cloud cost engineering",
+    summary: "Connecting service ownership, utilization, storage lifecycle, network cost, and unit economics so teams optimize cloud spend without harming users.",
+  },
+  {
+    category: "DEVOPS",
+    title: "Disaster recovery and chaos testing",
+    summary: "Validating backups, recovery objectives, dependency failures, regional failover, and operational runbooks before a real incident tests them.",
+  },
+  {
+    category: "AI ENGINEERING",
+    title: "Hybrid and vector retrieval",
+    summary: "Combining keyword relevance, embeddings, metadata filters, reranking, and access control to retrieve useful enterprise knowledge safely.",
+  },
+  {
+    category: "AI ENGINEERING",
+    title: "Context engineering and MCP",
+    summary: "Giving AI agents the right tools, instructions, memory, and scoped enterprise context while limiting permissions and irrelevant information.",
+  },
+  {
+    category: "AI ENGINEERING",
+    title: "Model routing and AI economics",
+    summary: "Routing tasks across models by quality, latency, privacy, and cost while caching safely and measuring value per successful outcome.",
+  },
+  {
+    category: "AI ENGINEERING",
+    title: "Human-in-the-loop AI systems",
+    summary: "Designing confidence thresholds, review queues, explanations, feedback capture, and escalation paths for high-impact automated decisions.",
+  },
+  {
+    category: "SYSTEM DESIGN",
+    title: "Consensus and leader election",
+    summary: "Understanding quorums, terms, split-brain prevention, and failure recovery when distributed services must agree on one authoritative state.",
+  },
+  {
+    category: "SYSTEM DESIGN",
+    title: "Distributed locks and leases",
+    summary: "Comparing fencing tokens, expirations, ownership renewal, and database alternatives so coordination remains safe when processes pause or networks fail.",
+  },
+  {
+    category: "SYSTEM DESIGN",
+    title: "Change data capture pipelines",
+    summary: "Streaming committed database changes into search, analytics, and downstream services while preserving ordering, replayability, and schema compatibility.",
+  },
+  {
+    category: "SYSTEM DESIGN",
+    title: "Time and ordering in distributed systems",
+    summary: "Using logical clocks, sequence numbers, watermarks, and event time to reason about operations that never share a perfectly synchronized clock.",
+  },
+  {
+    category: "SYSTEM DESIGN",
+    title: "Storage engine trade-offs",
+    summary: "Comparing B-trees, LSM trees, compaction, write amplification, and read patterns when choosing storage for latency and durability requirements.",
+  },
+  {
+    category: "SYSTEM DESIGN",
+    title: "Queue capacity and fair scheduling",
+    summary: "Planning bounded queues, priorities, concurrency limits, and tenant fairness so background workloads cannot starve time-sensitive product operations.",
+  },
+  {
+    category: "SYSTEM DESIGN",
+    title: "API gateways and service mesh",
+    summary: "Deciding where routing, authentication, retries, traffic policy, and telemetry belong without creating an invisible layer of operational complexity.",
+  },
+  {
+    category: "SYSTEM DESIGN",
+    title: "Capacity planning from first principles",
+    summary: "Estimating throughput, storage, bandwidth, concurrency, and growth headroom before validating assumptions with load tests and production measurements.",
+  },
+  {
+    category: "BACKEND",
+    title: "Spring Boot startup and efficiency",
+    summary: "Reducing dependency weight, initialization work, memory use, and container startup time while preserving the diagnostics needed in production.",
+  },
+  {
+    category: "BACKEND",
+    title: "gRPC and Protobuf contracts",
+    summary: "Using typed schemas, streaming, deadlines, compatibility rules, and generated clients for efficient communication between controlled backend services.",
+  },
+  {
+    category: "BACKEND",
+    title: "Durable background job orchestration",
+    summary: "Designing scheduled and asynchronous work with retries, checkpoints, deduplication, cancellation, visibility, and safe recovery after worker failure.",
+  },
+  {
+    category: "BACKEND",
+    title: "Consistent validation and errors",
+    summary: "Creating predictable validation boundaries, domain errors, status codes, correlation IDs, and client-safe messages across a portfolio of APIs.",
+  },
+  {
+    category: "BACKEND",
+    title: "Policy-based authorization",
+    summary: "Separating permissions from business code with roles, attributes, policy engines, decision logs, and default-deny behavior for complex organizations.",
+  },
+  {
+    category: "BACKEND",
+    title: "Redis beyond simple caching",
+    summary: "Applying sorted sets, streams, counters, locks, expiration, and atomic scripts while understanding persistence, clustering, and failure limitations.",
+  },
+  {
+    category: "BACKEND",
+    title: "Service testing strategy",
+    summary: "Balancing unit, integration, contract, component, and end-to-end tests to catch meaningful regressions without producing a slow and fragile pipeline.",
+  },
+  {
+    category: "BACKEND",
+    title: "Runtime configuration and secrets",
+    summary: "Loading validated configuration, rotating secrets, separating environments, and failing safely without leaking credentials into code, images, or logs.",
+  },
+  {
+    category: "FULL STACK",
+    title: "Real-time product updates",
+    summary: "Choosing WebSockets, Server-Sent Events, polling, or event notifications based on delivery guarantees, scale, reconnect behavior, and user expectations.",
+  },
+  {
+    category: "FULL STACK",
+    title: "Large file processing journeys",
+    summary: "Combining direct uploads, multipart transfer, background processing, progress reporting, validation, and safe downloads for reliable enterprise workflows.",
+  },
+  {
+    category: "FULL STACK",
+    title: "Internationalization and time zones",
+    summary: "Handling locale-aware content, currencies, calendars, daylight saving, storage conventions, and user preferences consistently across interface and services.",
+  },
+  {
+    category: "FULL STACK",
+    title: "Audit trails users can understand",
+    summary: "Capturing actor, action, time, reason, and before-after context so compliance records also help support teams and users resolve confusion.",
+  },
+  {
+    category: "FULL STACK",
+    title: "Search, filtering, and pagination",
+    summary: "Aligning query APIs with understandable controls, stable ordering, cursor pagination, saved filters, and URLs users can share and revisit.",
+  },
+  {
+    category: "FULL STACK",
+    title: "Reliable exports and reporting",
+    summary: "Generating large reports asynchronously with snapshots, permissions, progress, expiration, and reproducible results instead of blocking interactive requests.",
+  },
+  {
+    category: "FULL STACK",
+    title: "Product analytics with intent",
+    summary: "Defining trustworthy events, funnels, ownership, consent, and data quality so teams measure user outcomes rather than collect unused telemetry.",
+  },
+  {
+    category: "FULL STACK",
+    title: "Privacy and data lifecycle",
+    summary: "Designing retention, deletion, export, masking, and consent across databases, caches, search indexes, analytics, backups, and user-facing controls.",
+  },
+  {
+    category: "FRONTEND",
+    title: "Rendering very large datasets",
+    summary: "Using virtualization, incremental loading, stable keys, efficient selection, and server-side operations to keep data-heavy interfaces responsive.",
+  },
+  {
+    category: "FRONTEND",
+    title: "Complex form architecture",
+    summary: "Managing validation, dependent fields, drafts, autosave, error recovery, and accessibility without turning business forms into fragile state machines.",
+  },
+  {
+    category: "FRONTEND",
+    title: "Optimistic interfaces with recovery",
+    summary: "Updating the interface before the server responds while preserving rollback, conflict handling, progress feedback, and user trust when operations fail.",
+  },
+  {
+    category: "FRONTEND",
+    title: "Frontend testing by risk",
+    summary: "Selecting unit, component, accessibility, integration, and browser tests around costly user failures rather than chasing coverage as an isolated number.",
+  },
+  {
+    category: "FRONTEND",
+    title: "Durable component API design",
+    summary: "Creating composable components with clear responsibilities, predictable variants, controlled escape hatches, and migration paths as a design system evolves.",
+  },
+  {
+    category: "FRONTEND",
+    title: "Offline and unreliable-network UX",
+    summary: "Using local persistence, request queues, stale data indicators, reconnection, and conflict resolution for users working beyond perfect connectivity.",
+  },
+  {
+    category: "FRONTEND",
+    title: "Web Workers for heavy computation",
+    summary: "Moving parsing, transformation, and analysis away from the main thread while managing messaging, cancellation, memory, and browser support.",
+  },
+  {
+    category: "FRONTEND",
+    title: "Localization at product scale",
+    summary: "Supporting translated content, pluralization, bidirectional layouts, text expansion, formatting, and release workflows without slowing every product team.",
+  },
+  {
+    category: "DEVOPS",
+    title: "OpenTelemetry collector design",
+    summary: "Routing traces, metrics, and logs through resilient collectors with sampling, enrichment, redaction, backpressure, and cost-aware retention.",
+  },
+  {
+    category: "DEVOPS",
+    title: "Infrastructure as code at scale",
+    summary: "Structuring Terraform modules, remote state, policy checks, drift detection, review workflows, and ownership so infrastructure changes remain repeatable.",
+  },
+  {
+    category: "DEVOPS",
+    title: "Ephemeral preview environments",
+    summary: "Creating short-lived environments per change with realistic dependencies, safe data, automatic cleanup, and useful links for product review.",
+  },
+  {
+    category: "DEVOPS",
+    title: "Enterprise secrets management",
+    summary: "Centralizing secret storage, workload identity, rotation, audit logs, and emergency access while reducing long-lived credentials across environments.",
+  },
+  {
+    category: "DEVOPS",
+    title: "Container image security",
+    summary: "Building minimal images with pinned dependencies, non-root execution, vulnerability scanning, provenance, and policies that block unsafe releases.",
+  },
+  {
+    category: "DEVOPS",
+    title: "Safe database deployments",
+    summary: "Coordinating backward-compatible code, schema changes, backfills, validation, and rollback when application and database releases cannot be atomic.",
+  },
+  {
+    category: "DEVOPS",
+    title: "Incident command and learning",
+    summary: "Defining clear roles, communication, mitigation priorities, timelines, and blameless follow-up so incidents improve systems instead of only creating documents.",
+  },
+  {
+    category: "DEVOPS",
+    title: "Multi-account cloud governance",
+    summary: "Separating workloads with centralized identity, networking, logging, policy, and budgets while preserving enough autonomy for product teams to deliver.",
+  },
+  {
+    category: "AI ENGINEERING",
+    title: "Embedding and chunking strategy",
+    summary: "Selecting boundaries, overlap, metadata, models, and update policies that preserve meaning and improve retrieval for real enterprise documents.",
+  },
+  {
+    category: "AI ENGINEERING",
+    title: "Evaluation-driven AI development",
+    summary: "Turning representative tasks, expected behavior, failure categories, and human judgment into repeatable tests that guide every model or prompt change.",
+  },
+  {
+    category: "AI ENGINEERING",
+    title: "Prompt caching and semantic caching",
+    summary: "Reducing latency and model cost while defining safe cache keys, freshness, privacy boundaries, invalidation, and quality checks.",
+  },
+  {
+    category: "AI ENGINEERING",
+    title: "Fine-tuning and adapter trade-offs",
+    summary: "Choosing prompting, retrieval, fine-tuning, or smaller specialized models based on data quality, maintainability, cost, and measurable improvement.",
+  },
+  {
+    category: "AI ENGINEERING",
+    title: "Multimodal document intelligence",
+    summary: "Combining text, tables, images, layout, and OCR while preserving citations and confidence for complex enterprise document workflows.",
+  },
+  {
+    category: "AI ENGINEERING",
+    title: "AI red teaming and abuse testing",
+    summary: "Testing prompt injection, data exfiltration, unsafe tools, harmful outputs, and permission bypass before adversarial users discover them.",
+  },
+  {
+    category: "AI ENGINEERING",
+    title: "AI feedback data flywheels",
+    summary: "Capturing corrections, outcomes, and difficult examples with consent and quality controls so production use creates better evaluations and systems.",
+  },
+  {
+    category: "AI ENGINEERING",
+    title: "Workflows versus autonomous agents",
+    summary: "Choosing deterministic orchestration when predictability matters and bounded agent autonomy only where flexible reasoning creates measurable additional value.",
+  },
+  {
+    category: "AWS",
+    title: "AWS Well-Architected decisions",
+    summary: "Applying operational excellence, security, reliability, performance, cost, and sustainability principles as practical trade-offs instead of checklist compliance.",
+  },
+  {
+    category: "AWS",
+    title: "Lambda, ECS, or EKS",
+    summary: "Choosing compute by workload shape, scaling behavior, operational ownership, startup sensitivity, portability, and the real cost of platform complexity.",
+  },
+  {
+    category: "AWS",
+    title: "DynamoDB access-pattern design",
+    summary: "Modeling partition and sort keys, secondary indexes, transactions, conditional writes, hot-key protection, and capacity around known product queries.",
+  },
+  {
+    category: "AWS",
+    title: "SQS, SNS, and EventBridge",
+    summary: "Selecting queues, fan-out messaging, or event routing by delivery semantics, filtering, ordering, retries, ownership, and integration needs.",
+  },
+  {
+    category: "AWS",
+    title: "Step Functions orchestration",
+    summary: "Coordinating long-running workflows with explicit state, retries, parallel work, callbacks, observability, and compensation without custom orchestration code.",
+  },
+  {
+    category: "AWS",
+    title: "AWS multi-account foundations",
+    summary: "Using Organizations, Control Tower, account boundaries, centralized identity, networking, logging, and service control policies for governed growth.",
+  },
+  {
+    category: "AWS",
+    title: "IAM and least privilege",
+    summary: "Designing roles, short-lived credentials, permission boundaries, resource policies, and access analysis that reduce blast radius without blocking teams.",
+  },
+  {
+    category: "AWS",
+    title: "Edge security and delivery",
+    summary: "Combining CloudFront, API Gateway, WAF, Shield, caching, rate limits, and origin protection for fast and resilient public experiences.",
+  },
+  {
+    category: "AWS",
+    title: "AWS production observability",
+    summary: "Connecting CloudWatch, X-Ray, OpenTelemetry, structured logs, alarms, and service-level objectives into diagnostics teams can act on quickly.",
+  },
+  {
+    category: "AWS",
+    title: "AWS cost-aware architecture",
+    summary: "Using rightsizing, autoscaling, storage tiers, data-transfer analysis, Savings Plans, and unit economics to optimize spend without reducing reliability.",
   },
 ];
+
+const learningTrackContext = {
+  "SYSTEM DESIGN":
+    "This matters in large product companies because architecture choices determine whether growing traffic or a regional failure becomes a minor event or a customer-wide outage.",
+  BACKEND:
+    "For enterprise services, mastering this improves correctness, latency, operability, and the ability of multiple teams to evolve shared systems without breaking one another.",
+  "FULL STACK":
+    "Understanding the complete path from interface to infrastructure helps engineers remove user friction while diagnosing issues that would otherwise fall between team boundaries.",
+  FRONTEND:
+    "At product scale, this turns complex workflows into fast, accessible experiences that remain consistent as features, users, devices, and contributing teams continue to grow.",
+  DEVOPS:
+    "This gives product teams safer releases, faster recovery, clearer ownership, and predictable infrastructure so delivery speed does not come at the cost of reliability.",
+  "AI ENGINEERING":
+    "Enterprise AI creates impact only when its answers are measurable, secure, cost-aware, and safe enough for people to trust in real business workflows.",
+  AWS:
+    "AWS knowledge creates business impact when cloud services are selected deliberately, secured by default, observable in production, and operated at a sustainable cost.",
+};
 
 const greetings = [
   { text: "Hello", code: "EN" },
@@ -432,9 +921,12 @@ function App() {
   const [scrollProgress, setScrollProgress] = useState(0);
   const [theme, setTheme] = useState(() => localStorage.getItem("portfolio-theme") || "dark");
   const [songIndex, setSongIndex] = useState(() => Math.floor(Math.random() * songs.length));
-  const [topicIndex, setTopicIndex] = useState(
-    () => Math.floor(Math.random() * learningTopics.length),
-  );
+  const [topicIndex, setTopicIndex] = useState(() => {
+    const savedTopic = Number(localStorage.getItem("learning-topic-index"));
+    return Number.isInteger(savedTopic) && savedTopic >= 0 && savedTopic < learningTopics.length
+      ? savedTopic
+      : Math.floor(Math.random() * learningTopics.length);
+  });
   const [istTime, setIstTime] = useState("");
   const [assistantReply, setAssistantReply] = useState(
     "Harshit’s work centers on user ease: removing friction from complex workflows while engineering the reliability needed behind the interface. He enjoys owning products end to end—from understanding the problem and shaping the experience to building, observing, and improving the production system.",
@@ -442,6 +934,7 @@ function App() {
   const [assistantQuestions] = useState(createAssistantSuggestions);
   const cursorRef = useRef(null);
   const cursorRingRef = useRef(null);
+  const learningTouchStartRef = useRef(null);
 
   useEffect(() => {
     const timer = window.setTimeout(() => setLoading(false), 3900);
@@ -495,29 +988,9 @@ function App() {
   }, [songIndex]);
 
   useEffect(() => {
-    const topicDuration = 36 * 60 * 60 * 1000;
-    const savedAt = Number(localStorage.getItem("learning-topic-updated") || 0);
-    const savedTopic = Number(localStorage.getItem("learning-topic-index"));
-
-    if (Number.isInteger(savedTopic) && Date.now() - savedAt < topicDuration) {
-      setTopicIndex(savedTopic % learningTopics.length);
-    } else {
-      const next = Math.floor(Math.random() * learningTopics.length);
-      setTopicIndex(next);
-      localStorage.setItem("learning-topic-index", String(next));
-      localStorage.setItem("learning-topic-updated", String(Date.now()));
-    }
-
-    const rotation = window.setInterval(() => {
-      setTopicIndex((index) => {
-        const next = (index + 1) % learningTopics.length;
-        localStorage.setItem("learning-topic-index", String(next));
-        localStorage.setItem("learning-topic-updated", String(Date.now()));
-        return next;
-      });
-    }, topicDuration);
-    return () => window.clearInterval(rotation);
-  }, []);
+    localStorage.setItem("learning-topic-index", String(topicIndex));
+    localStorage.removeItem("learning-topic-updated");
+  }, [topicIndex]);
 
   useEffect(() => {
     const moveCursor = (event) => {
@@ -592,6 +1065,22 @@ function App() {
     };
   }, [overviewOpen]);
 
+  const changeLearningTopic = (direction) => {
+    setTopicIndex((index) => (index + direction + learningTopics.length) % learningTopics.length);
+  };
+
+  const handleLearningTouchStart = (event) => {
+    learningTouchStartRef.current = event.touches[0].clientX;
+  };
+
+  const handleLearningTouchEnd = (event) => {
+    if (learningTouchStartRef.current === null) return;
+    const distance = event.changedTouches[0].clientX - learningTouchStartRef.current;
+    learningTouchStartRef.current = null;
+    if (Math.abs(distance) < 42) return;
+    changeLearningTopic(distance < 0 ? 1 : -1);
+  };
+
   const scrollTo = (id) => {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
   };
@@ -647,6 +1136,19 @@ function App() {
             <span />
             Available to talk
           </button>
+          <a
+            className="resume-link"
+            href="https://drive.google.com/file/d/1BdYIRjepUsdf6_XxTV4MdWhZaE4A5fhJ/view?usp=sharing"
+            target="_blank"
+            rel="noreferrer"
+            aria-label="Open Harshit Bhatia's resume"
+            title="Open resume"
+          >
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M12 3v12m0 0 4-4m-4 4-4-4M5 19h14" />
+            </svg>
+            <span>Resume</span>
+          </a>
           <button
             className="theme-toggle"
             onClick={() => setTheme((value) => (value === "dark" ? "light" : "dark"))}
@@ -740,13 +1242,36 @@ function App() {
                 </span>
                 <span className="equalizer"><i /><i /><i /><i /></span>
               </a>
-              <div className="now-widget__item now-widget__item--learning">
+              <div
+                className="now-widget__item now-widget__item--learning"
+                onTouchStart={handleLearningTouchStart}
+                onTouchEnd={handleLearningTouchEnd}
+              >
                 <span className="now-widget__icon">⌁</span>
-                <span>
-                  <small>CURRENTLY LEARNING</small>
+                <span className="learning-copy" key={topicIndex} aria-live="polite">
+                  <small>CURRENTLY LEARNING · {learningTopics[topicIndex].category}</small>
                   <strong>{learningTopics[topicIndex].title}</strong>
-                  <em>{learningTopics[topicIndex].summary}</em>
+                  <em>
+                    {learningTopics[topicIndex].summary}{" "}
+                    {learningTrackContext[learningTopics[topicIndex].category]}
+                  </em>
                 </span>
+                <div className="learning-controls" aria-label="Browse learning topics">
+                  <button
+                    type="button"
+                    aria-label="Previous learning topic"
+                    onClick={() => changeLearningTopic(-1)}
+                  >
+                    ‹
+                  </button>
+                  <button
+                    type="button"
+                    aria-label="Next learning topic"
+                    onClick={() => changeLearningTopic(1)}
+                  >
+                    ›
+                  </button>
+                </div>
               </div>
             </div>
           </div>
@@ -1489,6 +2014,38 @@ const styles = `
     gap: 7px;
   }
 
+  .resume-link {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    height: 40px;
+    padding: 0 12px;
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    color: var(--text);
+    background: rgba(138,180,248,.08);
+    font-size: 12px;
+    font-weight: 650;
+    text-decoration: none;
+    transition: border-color .2s ease, background .2s ease, transform .2s ease;
+  }
+
+  .resume-link svg {
+    width: 17px;
+    height: 17px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .resume-link:hover {
+    border-color: rgba(138,180,248,.42);
+    background: rgba(138,180,248,.15);
+    transform: translateY(-1px);
+  }
+
   .theme-toggle {
     display: grid;
     place-items: center;
@@ -1602,7 +2159,7 @@ const styles = `
   .widget-grid {
     display: grid;
     grid-template-columns: 1.6fr .75fr .75fr;
-    grid-template-rows: 185px 112px;
+    grid-template-rows: 185px 150px;
     gap: 14px;
   }
 
@@ -1829,6 +2386,7 @@ const styles = `
   .now-widget__item--learning {
     position: relative;
     overflow: hidden;
+    touch-action: pan-y;
   }
 
   .now-widget__item--learning::after {
@@ -1901,7 +2459,47 @@ const styles = `
     line-height: 1.35;
     white-space: normal;
     -webkit-box-orient: vertical;
-    -webkit-line-clamp: 2;
+    -webkit-line-clamp: 4;
+  }
+
+  .learning-copy {
+    animation: learning-copy-in .28s ease both;
+  }
+
+  .learning-controls {
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    flex: 0 0 auto;
+    gap: 4px;
+    margin-left: auto;
+  }
+
+  .learning-controls button {
+    display: grid;
+    place-items: center;
+    width: 27px;
+    height: 27px;
+    padding: 0;
+    border: 1px solid var(--line);
+    border-radius: 50%;
+    color: var(--text);
+    background: var(--surface-2);
+    font-size: 20px;
+    line-height: 1;
+    cursor: pointer;
+    transition: border-color .2s ease, background .2s ease, transform .2s ease;
+  }
+
+  .learning-controls button:hover {
+    border-color: var(--blue);
+    background: rgba(138,180,248,.12);
+    transform: translateY(-1px);
+  }
+
+  @keyframes learning-copy-in {
+    from { opacity: 0; transform: translateX(7px); }
+    to { opacity: 1; transform: translateX(0); }
   }
 
   .equalizer {
@@ -3156,7 +3754,7 @@ const styles = `
     .availability { display: none; }
     .hero { padding-top: 125px; }
     .hero__intro { margin-left: 0; }
-    .widget-grid { grid-template-columns: 1fr 1fr; grid-template-rows: 270px 150px 105px; }
+    .widget-grid { grid-template-columns: 1fr 1fr; grid-template-rows: 270px 150px 145px; }
     .name-widget { grid-column: 1 / 3; grid-row: auto; }
     .now-widget { grid-column: 1 / 3; }
     .job-card { grid-template-columns: 100px 1fr; }
@@ -3198,7 +3796,7 @@ const styles = `
   @media (max-width: 640px) {
     body { padding-bottom: calc(74px + env(safe-area-inset-bottom)); }
     .section-shell { width: min(100% - 24px, 1180px); }
-    .content-section, .assistant-section, .contact-section { padding-top: 78px; scroll-margin-top: 70px; }
+    .content-section, .assistant-section, .contact-section { padding-top: 58px; scroll-margin-top: 70px; }
 
     .topbar {
       top: 10px;
@@ -3212,6 +3810,13 @@ const styles = `
     .brand { display: block; }
     .topbar > nav { display: none; }
     .topbar__actions { justify-self: end; }
+    .resume-link {
+      width: 38px;
+      padding: 0;
+      justify-content: center;
+      border-radius: 12px;
+    }
+    .resume-link span { display: none; }
     .theme-toggle { width: 38px; height: 38px; border-radius: 12px; }
 
     .mobile-nav {
@@ -3299,21 +3904,21 @@ const styles = `
       box-shadow: 0 14px 40px rgba(60,55,45,.16);
     }
 
-    .hero { min-height: auto; padding-top: 96px; padding-bottom: 30px; }
-    .hero__status { margin-bottom: 34px; }
+    .hero { min-height: auto; padding-top: 88px; padding-bottom: 20px; }
+    .hero__status { margin-bottom: 24px; }
     .hero__location { display: none; }
     .hero__heading h1 { margin-top: 12px; font-size: clamp(42px, 13.5vw, 62px); line-height: .96; }
-    .hero__intro { margin-bottom: 32px; font-size: 16px; line-height: 1.65; }
+    .hero__intro { margin-bottom: 24px; font-size: 16px; line-height: 1.6; }
     .accent-word::after { right: -13px; width: 9px; height: 9px; }
-    .widget-grid { display: grid; grid-template-rows: 240px 130px auto; gap: 9px; }
-    .name-widget { padding: 22px; }
+    .widget-grid { display: grid; grid-template-rows: 218px 118px auto; gap: 8px; }
+    .name-widget { padding: 19px; }
     .profile-orb { top: 21px; right: 21px; width: 68px; height: 68px; border-width: 4px; }
     .pixel-orbit--one { width: 160px; height: 68px; }
     .pixel-orbit--two { top: 95px; right: 45px; width: 55px; height: 55px; }
     .name-widget__name { font-size: 34px; }
     .name-widget__role { max-width: 230px; font-size: 12px; line-height: 1.45; }
     .name-widget__action { font-size: 12px; }
-    .metric-widget { min-width: 0; padding: 17px; }
+    .metric-widget { min-width: 0; padding: 15px; }
     .metric-widget strong { font-size: 38px; }
     .metric-widget .widget-label { font-size: 9px; }
     .metric-widget__caption { max-width: 125px; font-size: 10px; line-height: 1.45; }
@@ -3348,68 +3953,73 @@ const styles = `
       white-space: normal;
       -webkit-line-clamp: unset;
     }
-    .impact-strip { grid-template-columns: 1fr 1fr; gap: 28px 10px; padding: 30px 20px; }
+    .learning-controls { display: none; }
+    .impact-strip { grid-template-columns: 1fr 1fr; gap: 18px 10px; padding: 22px 18px; }
     .impact-strip > i { display: none; }
     .impact-strip strong { font-size: 21px; }
     .impact-strip span { font-size: 11px; text-align: center; }
-    .section-heading { margin-bottom: 28px; }
+    .section-heading { margin-bottom: 20px; }
     .section-heading h2 { font-size: 40px; }
-    .job-card { grid-template-columns: 1fr; gap: 17px; padding: 22px; border-radius: 26px; }
+    .timeline, .earlier-grid, .project-grid, .skills-grid { gap: 10px; }
+    .job-card { grid-template-columns: 1fr; gap: 13px; padding: 18px; border-radius: 23px; }
     .job-card__meta, .job-card__content { grid-column: 1; }
-    .job-card__meta { flex-direction: column; }
+    .job-card__meta { flex-direction: column; gap: 6px; padding-top: 0; }
     .company-brand-stack { align-items: flex-start; }
     .company-logo { width: 88px; }
     .job-card__content h3 { font-size: 25px; }
     .job-card__meta { font-size: 12px; }
     .job-card__location { font-size: 11px; }
-    .job-card__summary { font-size: 14px; }
-    .job-card li { font-size: 13px; }
+    .job-card__summary { margin: 11px 0 14px; font-size: 14px; line-height: 1.55; }
+    .job-card ul { gap: 7px; margin-bottom: 16px; }
+    .job-card li { font-size: 13px; line-height: 1.5; }
     .earlier-grid { grid-template-columns: 1fr; }
-    .earlier-card, .earlier-card:last-child { grid-column: auto; min-height: 0; }
-    .earlier-card > p { min-height: 0; }
+    .earlier-card, .earlier-card:last-child { grid-column: auto; min-height: 0; padding: 18px; }
+    .earlier-card > p { min-height: 0; margin: 10px 0 14px; }
     .project-grid, .skills-grid { grid-template-columns: 1fr; }
-    .project-card { min-height: auto; padding: 20px; border-radius: 26px; }
+    .project-card { min-height: auto; padding: 18px; border-radius: 23px; }
     .project-card:last-child:nth-child(odd) { grid-column: auto; }
-    .project-card__visual { height: 190px; margin: 20px 0; }
+    .project-card__visual { height: 150px; margin: 14px 0; }
     .project-card h3 { font-size: 28px; }
     .project-card > p { min-height: auto; font-size: 14px; }
-    .project-card__result { min-height: auto; font-size: 12px; }
+    .project-card__result { min-height: auto; margin: 14px 0; font-size: 12px; }
+    .project-card__result ul { gap: 5px; margin-top: 6px; }
     .tag-row span { font-size: 10px; }
-    .project-card__link { position: static; margin-top: 20px; }
-    .skill-card { min-height: auto; padding: 22px; }
-    .skill-card__top { margin-bottom: 24px; }
-    .skill-card > p { font-size: 13px; line-height: 1.55; }
-    .skill-list span { font-size: 12px; }
-    .cert-row { grid-template-columns: 1fr; padding: 20px; }
-    .cert-row > div { display: grid; grid-template-columns: 1fr; }
+    .project-card__link { position: static; margin-top: 14px; }
+    .skill-card { min-height: auto; padding: 18px; }
+    .skill-card__top { margin-bottom: 16px; }
+    .skill-card > p { margin-bottom: 16px; font-size: 13px; line-height: 1.5; }
+    .skill-list { gap: 6px; }
+    .skill-list span { padding: 7px 9px; font-size: 12px; }
+    .cert-row { grid-template-columns: 1fr; gap: 14px; padding: 17px; }
+    .cert-row > div { display: grid; grid-template-columns: 1fr; gap: 7px; }
     .cert-badge { width: 100%; min-width: 0; }
     .education-item,
     .education-item--primary {
       grid-template-columns: 1fr;
-      gap: 12px;
+      gap: 8px;
       min-height: 0;
-      padding: 25px 22px;
+      padding: 18px;
     }
     .education-item p { font-size: 13px; line-height: 1.5; }
     .education-item__year { font-size: 11px; }
     .education-item__score { justify-self: start; font-size: 10px; }
     .assistant-card { min-height: 0; border-radius: 27px; }
-    .assistant-section { padding-top: 64px; }
+    .assistant-section { padding-top: 54px; }
     .assistant-card__head {
       align-items: center;
       gap: 13px;
-      padding: 22px 20px;
+      padding: 18px;
     }
     .assistant-icon { flex-basis: 40px; width: 40px; height: 40px; border-radius: 14px; }
     .assistant-card__head span:not(.assistant-icon) { font-size: 8px; }
     .assistant-card h2 { max-width: 260px; margin-top: 7px; font-size: 27px; }
-    .assistant-card__body { padding: 20px; }
+    .assistant-card__body { padding: 18px; }
     .assistant-answer {
       display: grid;
       grid-template-columns: 25px minmax(0, 1fr);
       min-height: 0;
-      margin-bottom: 18px;
-      padding: 14px;
+      margin-bottom: 14px;
+      padding: 12px;
       border-radius: 17px 17px 17px 5px;
     }
     .assistant-answer > span { flex-basis: 25px; width: 25px; height: 25px; border-radius: 9px; }
@@ -3427,8 +4037,8 @@ const styles = `
     .assistant-options button {
       width: 100%;
       min-width: 0;
-      min-height: 58px;
-      padding: 11px 13px;
+      min-height: 50px;
+      padding: 9px 11px;
       border-radius: 15px;
       font-size: 12px;
       line-height: 1.4;
@@ -3436,12 +4046,13 @@ const styles = `
       white-space: normal;
       overflow-wrap: anywhere;
     }
-    .contact-card { gap: 30px; padding: 30px 22px; border-radius: 28px; }
+    .contact-card { gap: 20px; padding: 23px 18px; border-radius: 25px; }
     .contact-card h2 { font-size: 42px; }
     .contact-card__copy > p:last-child { font-size: 14px; }
     .email-button { gap: 12px; padding: 16px; font-size: 11px; word-break: break-all; }
-    .contact-links { flex-direction: column; }
-    footer { flex-wrap: wrap; gap: 14px; padding-bottom: 24px; }
+    .contact-links { flex-flow: row wrap; gap: 7px; }
+    .contact-links a { flex: 1 1 120px; min-width: 120px; }
+    footer { flex-wrap: wrap; gap: 10px; padding-bottom: 18px; }
     footer span:nth-child(2) { display: none; }
     .overview { padding: 10px; }
     .overview__card { max-height: calc(100dvh - 20px); padding: 28px 22px; border-radius: 30px; }
@@ -3463,7 +4074,7 @@ const styles = `
   @media (max-width: 390px) {
     .mobile-nav button small { font-size: 8px; }
     .hero__heading h1 { font-size: 41px; }
-    .widget-grid { grid-template-rows: 235px 126px auto; }
+    .widget-grid { grid-template-rows: 212px 114px auto; }
     .name-widget__name { max-width: 230px; font-size: 31px; }
     .profile-orb { width: 62px; height: 62px; }
     .metric-widget strong { font-size: 34px; }
