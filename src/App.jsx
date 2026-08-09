@@ -926,44 +926,34 @@ function createMixedLearningOrder() {
     groupedTopics[category] = shuffle(groupedTopics[category]);
   });
 
+  const blockTemplates = [
+    [5, 4, 5, 6],
+    [6, 3, 5, 6],
+    [4, 6, 4, 6],
+    [5, 5, 4, 6],
+    [3, 6, 5, 6],
+  ];
+  const categoryBlocks = {};
+  Object.keys(groupedTopics).forEach((category) => {
+    const template = shuffle(
+      blockTemplates[Math.floor(Math.random() * blockTemplates.length)],
+    );
+    categoryBlocks[category] = template.map((blockSize) =>
+      Array.from({ length: blockSize }, () => groupedTopics[category].pop()),
+    );
+  });
+
   const order = [];
   let previousCategory = null;
-  while (order.length < learningTopics.length) {
-    const availableCategories = shuffle(
-      Object.keys(groupedTopics).filter((category) => groupedTopics[category].length > 0),
-    );
-    if (availableCategories.length > 1 && availableCategories[0] === previousCategory) {
-      [availableCategories[0], availableCategories[1]] = [
-        availableCategories[1],
-        availableCategories[0],
-      ];
+  for (let round = 0; round < 4; round += 1) {
+    const categories = shuffle(Object.keys(categoryBlocks));
+    if (categories[0] === previousCategory) {
+      [categories[0], categories[1]] = [categories[1], categories[0]];
     }
-    availableCategories.forEach((category) => {
-      order.push(groupedTopics[category].pop());
+    categories.forEach((category) => {
+      order.push(...categoryBlocks[category][round]);
       previousCategory = category;
     });
-  }
-
-  const firstCategory = learningTopics[order[0]].category;
-  const lastCategory = learningTopics[order[order.length - 1]].category;
-  if (firstCategory === lastCategory) {
-    const penultimateCategory = learningTopics[order[order.length - 2]].category;
-    const swapIndex = order.findIndex((topicIndex, index) => {
-      if (index === 0 || index >= order.length - 1) return false;
-      const category = learningTopics[topicIndex].category;
-      return (
-        category !== firstCategory &&
-        category !== penultimateCategory &&
-        learningTopics[order[index - 1]].category !== firstCategory &&
-        learningTopics[order[index + 1]].category !== firstCategory
-      );
-    });
-    if (swapIndex > 0) {
-      [order[swapIndex], order[order.length - 1]] = [
-        order[order.length - 1],
-        order[swapIndex],
-      ];
-    }
   }
   return order;
 }
@@ -1184,7 +1174,7 @@ function App() {
   const [songIndex, setSongIndex] = useState(() => Math.floor(Math.random() * songs.length));
   const [learningOrder] = useState(() => {
     try {
-      const savedOrder = JSON.parse(localStorage.getItem("learning-topic-order"));
+      const savedOrder = JSON.parse(localStorage.getItem("learning-topic-order-v3"));
       const isValidOrder =
         Array.isArray(savedOrder) &&
         savedOrder.length === learningTopics.length &&
@@ -1197,7 +1187,9 @@ function App() {
       // Create a fresh order if stored data is missing or invalid.
     }
     const nextOrder = createMixedLearningOrder();
-    localStorage.setItem("learning-topic-order", JSON.stringify(nextOrder));
+    localStorage.setItem("learning-topic-order-v3", JSON.stringify(nextOrder));
+    localStorage.removeItem("learning-topic-order");
+    localStorage.removeItem("learning-topic-order-v2");
     return nextOrder;
   });
   const [topicIndex, setTopicIndex] = useState(() => {
@@ -2697,6 +2689,7 @@ const styles = `
   .now-widget__item--learning {
     position: relative;
     overflow: hidden;
+    background: rgba(138,180,248,.025);
     touch-action: pan-y;
   }
 
@@ -2771,6 +2764,21 @@ const styles = `
     white-space: normal;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 4;
+  }
+
+  .now-widget__item--learning .learning-copy small {
+    font-size: 8.5px;
+  }
+
+  .now-widget__item--learning .learning-copy strong {
+    font-size: 14px;
+    line-height: 1.3;
+  }
+
+  .now-widget__item--learning .learning-copy em {
+    color: #c3cad5;
+    font-size: 10.75px;
+    line-height: 1.45;
   }
 
   .learning-copy {
@@ -3971,6 +3979,14 @@ const styles = `
     color: #4d535c;
   }
 
+  :root[data-theme="light"] .now-widget__item--learning {
+    background: rgba(55,105,174,.025);
+  }
+
+  :root[data-theme="light"] .now-widget__item--learning .learning-copy em {
+    color: #485568;
+  }
+
   :root[data-theme="light"] .job-card__company { color: #34373d; }
   :root[data-theme="light"] .job-card__company em { color: #174ea6; background: #d7e6ff; }
 
@@ -4233,6 +4249,8 @@ const styles = `
       white-space: normal;
       -webkit-line-clamp: unset;
     }
+    .now-widget__item--learning .learning-copy strong { font-size: 14px; }
+    .now-widget__item--learning .learning-copy em { font-size: 11px; line-height: 1.5; }
     .impact-strip { grid-template-columns: 1fr 1fr; gap: 18px 10px; padding: 22px 18px; }
     .impact-strip > i { display: none; }
     .impact-strip strong { font-size: 21px; }
