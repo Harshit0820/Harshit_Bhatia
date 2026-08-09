@@ -491,16 +491,28 @@ function App() {
   }, []);
 
   useEffect(() => {
-    const updateProgress = () => {
+    const updateScrollState = () => {
       const scrollable = document.documentElement.scrollHeight - window.innerHeight;
       setScrollProgress(scrollable > 0 ? window.scrollY / scrollable : 0);
+
+      const marker = window.scrollY + window.innerHeight * 0.38;
+      const sectionIds = ["home", "assistant", "experience", "work", "skills", "education", "contact"];
+      let current = "home";
+      sectionIds.forEach((id) => {
+        const section = document.getElementById(id);
+        if (section && section.offsetTop <= marker) current = id;
+      });
+      if (window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 8) {
+        current = "contact";
+      }
+      setActiveSection(current);
     };
-    updateProgress();
-    window.addEventListener("scroll", updateProgress, { passive: true });
-    window.addEventListener("resize", updateProgress);
+    updateScrollState();
+    window.addEventListener("scroll", updateScrollState, { passive: true });
+    window.addEventListener("resize", updateScrollState);
     return () => {
-      window.removeEventListener("scroll", updateProgress);
-      window.removeEventListener("resize", updateProgress);
+      window.removeEventListener("scroll", updateScrollState);
+      window.removeEventListener("resize", updateScrollState);
     };
   }, []);
 
@@ -515,23 +527,8 @@ function App() {
     );
     document.querySelectorAll(".reveal").forEach((element) => revealObserver.observe(element));
 
-    const sectionObserver = new IntersectionObserver(
-      (entries) => {
-        const visible = entries
-          .filter((entry) => entry.isIntersecting)
-          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
-        if (visible) setActiveSection(visible.target.id);
-      },
-      { rootMargin: "-25% 0px -60%", threshold: [0.05, 0.25, 0.5] },
-    );
-    [...navItems, "assistant"].forEach((id) => {
-      const section = document.getElementById(id);
-      if (section) sectionObserver.observe(section);
-    });
-
     return () => {
       revealObserver.disconnect();
-      sectionObserver.disconnect();
     };
   }, [loading]);
 
