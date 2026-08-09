@@ -890,21 +890,21 @@ const learningTopics = [
   },
 ];
 
-const learningTrackContext = {
+const learningInterviewFocus = {
   "SYSTEM DESIGN":
-    "This matters in large product companies because architecture choices determine whether growing traffic or a regional failure becomes a minor event or a customer-wide outage.",
+    "Interview focus: define requirements, estimate scale, compare consistency and availability, identify bottlenecks, and explain failure handling, recovery, and observability.",
   BACKEND:
-    "For enterprise services, mastering this improves correctness, latency, operability, and the ability of multiple teams to evolve shared systems without breaking one another.",
+    "Interview focus: explain transaction boundaries, concurrency, API contracts, data modeling, retries, testing, performance limits, and behavior during partial failure.",
   "FULL STACK":
-    "Understanding the complete path from interface to infrastructure helps engineers remove user friction while diagnosing issues that would otherwise fall between team boundaries.",
+    "Interview focus: trace the request end to end, define frontend and backend responsibilities, handle security and errors, and reason about consistency and latency.",
   FRONTEND:
-    "At product scale, this turns complex workflows into fast, accessible experiences that remain consistent as features, users, devices, and contributing teams continue to grow.",
+    "Interview focus: discuss rendering behavior, state ownership, browser performance, accessibility, security, test strategy, and maintainable component boundaries.",
   DEVOPS:
-    "This gives product teams safer releases, faster recovery, clearer ownership, and predictable infrastructure so delivery speed does not come at the cost of reliability.",
+    "Interview focus: design CI/CD, infrastructure, observability, SLOs, deployment and rollback, secrets, capacity, incident response, and disaster recovery.",
   "AI ENGINEERING":
-    "Enterprise AI creates impact only when its answers are measurable, secure, cost-aware, and safe enough for people to trust in real business workflows.",
+    "Interview focus: explain data flow, retrieval and evaluation, model selection, tool use, guardrails, latency, cost, security, and production monitoring.",
   AWS:
-    "AWS knowledge creates business impact when cloud services are selected deliberately, secured by default, observable in production, and operated at a sustainable cost.",
+    "Interview focus: justify service selection, design for high availability, apply least privilege and network isolation, and cover monitoring, recovery, scaling, and cost.",
 };
 
 function createMixedLearningOrder() {
@@ -1580,7 +1580,7 @@ function App() {
                   <strong>{learningTopics[topicIndex].title}</strong>
                   <em>
                     {learningTopics[topicIndex].summary}{" "}
-                    {learningTrackContext[learningTopics[topicIndex].category]}
+                    {learningInterviewFocus[learningTopics[topicIndex].category]}
                   </em>
                 </span>
               </div>
