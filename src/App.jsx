@@ -152,30 +152,37 @@ const skillGroups = [
   {
     title: "Frontend",
     note: "Interfaces that feel fast and stay maintainable.",
-    skills: ["React", "TypeScript", "JavaScript", "Redux", "HTML / CSS", "Material UI"],
-    icons: ["react", "typescript", "javascript", "redux"],
+    skills: ["React", "JavaScript", "TypeScript", "Redux", "HTML / CSS", "Material UI"],
+    icons: ["react", "javascript", "typescript", "redux"],
     color: "blue",
   },
   {
     title: "Backend",
     note: "APIs and services designed for real traffic.",
-    skills: ["Java", "Spring Boot", "Node.js", "Python", "REST APIs", "GraphQL"],
+    skills: ["Java", "Spring Boot", "Microservices", "Multithreading", "Node.js", "Python", "REST APIs", "GraphQL", "API Management"],
     icons: ["java", "spring", "nodejs", "python"],
     color: "red",
   },
   {
     title: "Data & messaging",
     note: "Reliable storage, search, and async systems.",
-    skills: ["MySQL", "PostgreSQL", "Redis", "Elasticsearch", "Kafka", "DynamoDB"],
+    skills: ["MySQL", "PostgreSQL", "Redis", "Elasticsearch", "Kafka", "Amazon DynamoDB", "Amazon RDS", "Amazon SQS"],
     icons: ["mysql", "postgresql", "redis", "elasticsearch"],
     color: "yellow",
   },
   {
     title: "Cloud & delivery",
     note: "From a clean commit to healthy production.",
-    skills: ["AWS", "Docker", "Kubernetes", "CI / CD", "CloudWatch", "GitHub"],
+    skills: ["AWS", "Amazon EC2", "AWS Lambda", "Amazon S3", "CloudWatch", "Docker", "Kubernetes", "CI / CD", "GitHub", "Cloud Security", "Infrastructure Automation"],
     icons: ["amazonwebservices", "docker", "kubernetes", "github"],
     color: "green",
+  },
+  {
+    title: "Engineering Foundations",
+    note: "Fundamentals for efficient code, sound design, and reliable systems.",
+    skills: ["OOP", "Data Structures", "Algorithms", "Design Concepts", "Design Patterns", "Operating Systems", "DBMS", "Computer Networks"],
+    icons: ["leetcode", "cplusplus", "linux", "postgresql"],
+    color: "blue",
   },
 ];
 
@@ -989,7 +996,7 @@ const assistantQuestionBank = [
     tier: 2,
     prompts: ["What is his strongest stack?", "Which technologies does he use?", "Summarize his technical toolkit"],
     answer:
-      "Harshit’s core stack is React, TypeScript, Redux, Java, Spring Boot, and REST APIs, supported by AWS and container-based delivery. For data-intensive systems, he works across MySQL, PostgreSQL, DynamoDB, Redis, Elasticsearch, and event-driven messaging based on the access pattern.",
+      "Harshit’s core stack is React, JavaScript, TypeScript, Redux, Java, Spring Boot, and REST APIs, supported by AWS and container-based delivery. For data-intensive systems, he works across MySQL, PostgreSQL, DynamoDB, Redis, Elasticsearch, and event-driven messaging based on the access pattern.",
   },
   {
     id: "systems",
@@ -1099,7 +1106,7 @@ function EmphasizedText({ text }) {
     "three years", "Intuit", "end-to-end full-stack ownership", "production impact",
     "user ease", "clear feedback", "reliable",
     "100+ features", "60+ catalogs", "1,000+ users", "20+ teams", "60%", "70%", "30+", "98%",
-    "React", "TypeScript", "Redux", "Java", "Spring Boot", "REST APIs", "AWS",
+    "React", "JavaScript", "TypeScript", "Redux", "Java", "Spring Boot", "REST APIs", "AWS",
     "MySQL", "PostgreSQL", "DynamoDB", "Redis", "Elasticsearch", "event-driven messaging",
     "low-latency", "circuit breakers", "failure modes", "observability", "access control", "rollback strategies",
     "performance", "responsive behavior", "reusable components", "predictable state",
@@ -1928,7 +1935,7 @@ function App() {
             <div><strong>Best at</strong><span>Owning products end to end</span></div>
             <div>
               <strong>Core stack</strong>
-              <span>React · TypeScript · Java · Spring Boot · AWS · Elasticsearch · Redis · SQL / NoSQL</span>
+              <span>React · JavaScript · TypeScript · Java · Spring Boot · AWS · Elasticsearch · Redis · SQL / NoSQL</span>
             </div>
             <div><strong>Care about</strong><span>User ease · Clarity · Reliability</span></div>
           </div>
@@ -3420,6 +3427,11 @@ const styles = `
     background: var(--surface);
   }
 
+  .skill-card:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+    min-height: 260px;
+  }
+
   .skill-card__top {
     display: flex;
     align-items: flex-start;
@@ -4487,6 +4499,7 @@ const styles = `
     .tag-row span { font-size: 10px; }
     .project-card__link { position: static; margin-top: 14px; }
     .skill-card { min-height: auto; padding: 18px; }
+    .skill-card:last-child:nth-child(odd) { grid-column: auto; min-height: auto; }
     .skill-card__top { margin-bottom: 16px; }
     .skill-card > p { margin-bottom: 16px; font-size: 13px; line-height: 1.5; }
     .skill-list { gap: 6px; }
