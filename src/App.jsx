@@ -187,7 +187,7 @@ const songs = [
   { title: "Money Trees", artist: "Kendrick Lamar", query: "Kendrick Lamar Money Trees", duration: 386000 },
 ];
 
-const learningTopics = [
+const learningTopicLibrary = [
   {
     category: "SYSTEM DESIGN",
     title: "Multi-region data consistency",
@@ -890,6 +890,10 @@ const learningTopics = [
   },
 ];
 
+const learningTopics = learningTopicLibrary.filter(
+  (topic) => ["SYSTEM DESIGN", "FRONTEND", "BACKEND", "FULL STACK", "AWS"].includes(topic.category),
+);
+
 const learningInterviewFocus = {
   "SYSTEM DESIGN":
     "Interview focus: define requirements, estimate scale, compare consistency and availability, identify bottlenecks, and explain failure handling, recovery, and observability.",
@@ -899,10 +903,6 @@ const learningInterviewFocus = {
     "Interview focus: trace the request end to end, define frontend and backend responsibilities, handle security and errors, and reason about consistency and latency.",
   FRONTEND:
     "Interview focus: discuss rendering behavior, state ownership, browser performance, accessibility, security, test strategy, and maintainable component boundaries.",
-  DEVOPS:
-    "Interview focus: design CI/CD, infrastructure, observability, SLOs, deployment and rollback, secrets, capacity, incident response, and disaster recovery.",
-  "AI ENGINEERING":
-    "Interview focus: explain data flow, retrieval and evaluation, model selection, tool use, guardrails, latency, cost, security, and production monitoring.",
   AWS:
     "Interview focus: justify service selection, design for high availability, apply least privilege and network isolation, and cover monitoring, recovery, scaling, and cost.",
 };
@@ -926,34 +926,39 @@ function createMixedLearningOrder() {
     groupedTopics[category] = shuffle(groupedTopics[category]);
   });
 
-  const blockTemplates = [
-    [5, 4, 5, 6],
-    [6, 3, 5, 6],
-    [4, 6, 4, 6],
-    [5, 5, 4, 6],
-    [3, 6, 5, 6],
-  ];
   const categoryBlocks = {};
   Object.keys(groupedTopics).forEach((category) => {
-    const template = shuffle(
-      blockTemplates[Math.floor(Math.random() * blockTemplates.length)],
-    );
-    categoryBlocks[category] = template.map((blockSize) =>
-      Array.from({ length: blockSize }, () => groupedTopics[category].pop()),
-    );
+    categoryBlocks[category] = [];
+    while (groupedTopics[category].length > 0) {
+      const remaining = groupedTopics[category].length;
+      const validSizes = [3, 4, 5, 6].filter(
+        (size) => size <= remaining && (remaining - size === 0 || remaining - size >= 3),
+      );
+      const blockSize = validSizes[Math.floor(Math.random() * validSizes.length)];
+      categoryBlocks[category].push(
+        Array.from({ length: blockSize }, () => groupedTopics[category].pop()),
+      );
+    }
   });
 
   const order = [];
   let previousCategory = null;
-  for (let round = 0; round < 4; round += 1) {
-    const categories = shuffle(Object.keys(categoryBlocks));
-    if (categories[0] === previousCategory) {
-      [categories[0], categories[1]] = [categories[1], categories[0]];
-    }
-    categories.forEach((category) => {
-      order.push(...categoryBlocks[category][round]);
-      previousCategory = category;
-    });
+  while (order.length < learningTopics.length) {
+    const availableCategories = Object.keys(categoryBlocks).filter(
+      (category) => categoryBlocks[category].length > 0 && category !== previousCategory,
+    );
+    const categoryPool = availableCategories.length > 0
+      ? availableCategories
+      : Object.keys(categoryBlocks).filter((category) => categoryBlocks[category].length > 0);
+    const mostBlocksRemaining = Math.max(
+      ...categoryPool.map((category) => categoryBlocks[category].length),
+    );
+    const balancedPool = categoryPool.filter(
+      (category) => categoryBlocks[category].length === mostBlocksRemaining,
+    );
+    const category = balancedPool[Math.floor(Math.random() * balancedPool.length)];
+    order.push(...categoryBlocks[category].pop());
+    previousCategory = category;
   }
   return order;
 }
@@ -1174,7 +1179,7 @@ function App() {
   const [songIndex, setSongIndex] = useState(() => Math.floor(Math.random() * songs.length));
   const [learningOrder] = useState(() => {
     try {
-      const savedOrder = JSON.parse(localStorage.getItem("learning-topic-order-v3"));
+      const savedOrder = JSON.parse(localStorage.getItem("learning-topic-order-v5"));
       const isValidOrder =
         Array.isArray(savedOrder) &&
         savedOrder.length === learningTopics.length &&
@@ -1187,9 +1192,11 @@ function App() {
       // Create a fresh order if stored data is missing or invalid.
     }
     const nextOrder = createMixedLearningOrder();
-    localStorage.setItem("learning-topic-order-v3", JSON.stringify(nextOrder));
+    localStorage.setItem("learning-topic-order-v5", JSON.stringify(nextOrder));
     localStorage.removeItem("learning-topic-order");
     localStorage.removeItem("learning-topic-order-v2");
+    localStorage.removeItem("learning-topic-order-v3");
+    localStorage.removeItem("learning-topic-order-v4");
     return nextOrder;
   });
   const [topicIndex, setTopicIndex] = useState(() => {
