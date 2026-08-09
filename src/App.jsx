@@ -190,31 +190,31 @@ const songs = [
 const learningTopics = [
   {
     title: "Consistent hashing at scale",
-    summary: "How distributed systems rebalance nodes while moving as little cached data as possible.",
+    summary: "Exploring hash rings, virtual nodes, and replication to rebalance distributed caches with minimal data movement when servers change.",
   },
   {
     title: "Event-driven system design",
-    summary: "Designing loosely coupled services with durable events, retries, and safe failure handling.",
+    summary: "Designing loosely coupled services with durable events, retries, dead-letter queues, ordering guarantees, and safe consumer failure handling.",
   },
   {
     title: "Browser rendering internals",
-    summary: "How browsers parse, layout, paint, and composite pages into responsive user experiences.",
+    summary: "Studying the critical rendering path—from DOM and CSSOM creation to layout, paint, compositing, and smooth frame delivery.",
   },
   {
     title: "Idempotent API design",
-    summary: "Making retries safe so repeated requests cannot create duplicate or inconsistent results.",
+    summary: "Using idempotency keys, deduplication, and atomic operations so network retries cannot create duplicate or inconsistent results.",
   },
   {
     title: "Distributed caching patterns",
-    summary: "Using cache-aside, invalidation, and eviction strategies to reduce latency safely.",
+    summary: "Comparing cache-aside, write-through, invalidation, TTL, and eviction strategies to reduce latency while controlling stale data.",
   },
   {
     title: "React rendering performance",
-    summary: "Finding unnecessary renders and optimizing state, memoization, and component boundaries.",
+    summary: "Profiling unnecessary renders and improving state placement, memoization, component boundaries, code splitting, and perceived interface speed.",
   },
   {
     title: "Database indexing strategies",
-    summary: "Matching indexes to real query patterns while balancing read speed and write cost.",
+    summary: "Reading execution plans and designing composite or covering indexes that accelerate real queries without excessive write and storage cost.",
   },
 ];
 
@@ -2615,7 +2615,6 @@ const styles = `
     min-height: 88px;
     margin: 0 0 22px;
     padding: 16px;
-    border: 1px solid rgba(138,180,248,.14);
     border: 1px solid rgba(138,180,248,.14);
     border-left: 3px solid var(--blue);
     border-radius: 18px 18px 18px 6px;
