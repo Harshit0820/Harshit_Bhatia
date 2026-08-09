@@ -188,13 +188,34 @@ const songs = [
 ];
 
 const learningTopics = [
-  "Consistent hashing at scale",
-  "Event-driven system design",
-  "Browser rendering internals",
-  "Idempotent API design",
-  "Distributed caching patterns",
-  "React rendering performance",
-  "Database indexing strategies",
+  {
+    title: "Consistent hashing at scale",
+    summary: "Distributing data while minimizing costly remapping.",
+  },
+  {
+    title: "Event-driven system design",
+    summary: "Building loosely coupled services through reliable events.",
+  },
+  {
+    title: "Browser rendering internals",
+    summary: "Understanding how browsers turn code into responsive pixels.",
+  },
+  {
+    title: "Idempotent API design",
+    summary: "Making repeated requests safe and predictable.",
+  },
+  {
+    title: "Distributed caching patterns",
+    summary: "Reducing latency without sacrificing data consistency.",
+  },
+  {
+    title: "React rendering performance",
+    summary: "Preventing unnecessary work for faster interfaces.",
+  },
+  {
+    title: "Database indexing strategies",
+    summary: "Choosing indexes that accelerate real query patterns.",
+  },
 ];
 
 const greetings = [
@@ -215,105 +236,105 @@ const assistantQuestionBank = [
     tier: 1,
     prompts: ["Why should we hire Harshit?", "What makes Harshit a strong fit?", "Give me the recruiter summary"],
     answer:
-      "Harshit combines three years of enterprise delivery for Intuit with end-to-end full-stack ownership and measurable production impact. He can move from an ambiguous user need to a clear React experience, dependable Spring Boot services, cloud infrastructure, testing, and production observability.",
+      "I combine three years of enterprise delivery for Intuit with end-to-end full-stack ownership and measurable production impact. I can move from an ambiguous user need to a clear React experience, dependable Spring Boot services, cloud infrastructure, testing, and production observability.",
   },
   {
     id: "philosophy",
     tier: 1,
     prompts: ["What drives his work?", "What is his product philosophy?", "What does Harshit care about most?"],
     answer:
-      "His main focus is user ease: fewer unnecessary steps, clear feedback, and workflows people can understand quickly. He enjoys hiding technical complexity behind simple product experiences while ensuring the services, data layers, and cloud systems underneath remain reliable.",
+      "My main focus is user ease: fewer unnecessary steps, clear feedback, and workflows people can understand quickly. I enjoy hiding technical complexity behind simple product experiences while ensuring the services, data layers, and cloud systems underneath remain reliable.",
   },
   {
     id: "intuit",
     tier: 1,
     prompts: ["What has he delivered at Intuit?", "Show his Intuit impact", "What changed because of his work?"],
     answer:
-      "At Intuit, he has shipped 100+ features, built secure search across 60+ catalogs, and enabled real-time content previews for 1,000+ users across 20+ teams. His resilience work reduced HTTP 500 errors by 60% and production alerts by 70%, while better dashboards made platform behavior easier to understand.",
+      "At Intuit, I have shipped 100+ features, built secure search across 60+ catalogs, and enabled real-time content previews for 1,000+ users across 20+ teams. My resilience work reduced HTTP 500 errors by 60% and production alerts by 70%, while better dashboards made platform behavior easier to understand.",
   },
   {
     id: "stack",
     tier: 2,
     prompts: ["What is his strongest stack?", "Which technologies does he use?", "Summarize his technical toolkit"],
     answer:
-      "His core stack is React, TypeScript, Redux, Java, Spring Boot, and REST APIs, supported by AWS and container-based delivery. For data-intensive systems, he works across MySQL, PostgreSQL, DynamoDB, Redis, Elasticsearch, and event-driven messaging based on the access pattern.",
+      "My core stack is React, TypeScript, Redux, Java, Spring Boot, and REST APIs, supported by AWS and container-based delivery. For data-intensive systems, I work across MySQL, PostgreSQL, DynamoDB, Redis, Elasticsearch, and event-driven messaging based on the access pattern.",
   },
   {
     id: "systems",
     tier: 2,
     prompts: ["Can he build distributed systems?", "What backend systems has he built?", "Show his system-design experience"],
     answer:
-      "He has built low-latency URL shortening, event-driven publishing, resilient services with circuit breakers, secure search, and cache-backed APIs. His approach considers failure modes, observability, access control, rollback strategies, and the simplest architecture that can scale safely.",
+      "I have built low-latency URL shortening, event-driven publishing, resilient services with circuit breakers, secure search, and cache-backed APIs. My approach considers failure modes, observability, access control, rollback strategies, and the simplest architecture that can scale safely.",
   },
   {
     id: "frontend",
     tier: 2,
     prompts: ["What is his frontend experience?", "Can he own product interfaces?", "How strong is he with React?"],
     answer:
-      "He has delivered 100+ React and Redux features, built real-time preview workflows and finance dashboards, and integrated complex REST APIs. He prioritizes performance, responsive behavior, reusable components, predictable state, and clear feedback for users.",
+      "I have delivered 100+ React and Redux features, built real-time preview workflows and finance dashboards, and integrated complex REST APIs. I prioritize performance, responsive behavior, reusable components, predictable state, and clear feedback for users.",
   },
   {
     id: "projects",
     tier: 2,
     prompts: ["Which project should I see first?", "Show his best projects", "Where can I see practical work?"],
     answer:
-      "Start with Vera to see applied AI, automated machine learning, and conversational dataset exploration. Global Search demonstrates enterprise scale and access control, while Web Chat, Cats vs Dogs, and Car Review show frontend, machine-learning, and full-stack fundamentals with available source links.",
+      "Start with Vera to see my work in applied AI, automated machine learning, and conversational dataset exploration. My Global Search work demonstrates enterprise scale and access control, while Web Chat, Cats vs Dogs, and Car Review show my frontend, machine-learning, and full-stack foundations with available source links.",
   },
   {
     id: "reliability",
     tier: 2,
     prompts: ["How does he improve reliability?", "Show production engineering impact", "Does he work on quality and security?"],
     answer:
-      "He reduced HTTP 500s by 60%, production alerts by 70%, and resolved 30+ AWS security findings by treating reliability as a product requirement. He also expanded Cypress, Jest, and JUnit automation, improved coverage, and used production telemetry to prevent regressions.",
+      "I reduced HTTP 500s by 60%, production alerts by 70%, and resolved 30+ AWS security findings by treating reliability as a product requirement. I also expanded Cypress, Jest, and JUnit automation, improved coverage, and used production telemetry to prevent regressions.",
   },
   {
     id: "earlier",
     tier: 3,
     prompts: ["What did he do before Accenture?", "Show earlier experience", "What is his AI background?"],
     answer:
-      "Before Accenture, he built a multi-language coding and learning platform at MeritHub and authored practical technical coursework. At Samsung R&D, he developed an English–Punjabi speech recognition model using feature extraction and machine learning, reaching 98% transcription accuracy.",
+      "Before Accenture, I built a multi-language coding and learning platform at MeritHub and authored practical technical coursework. At Samsung R&D, I developed an English–Punjabi speech recognition model using feature extraction and machine learning, reaching 98% transcription accuracy.",
   },
   {
     id: "education",
     tier: 3,
     prompts: ["Where did he study?", "Summarize his education", "What is his academic background?"],
     answer:
-      "Harshit earned a Bachelor of Engineering in Electronics and Communication from Thapar Institute with an 8.55 CGPA. He completed Classes X and XII at Ryan International School in Chandigarh and continues learning through cloud certification and hands-on engineering projects.",
+      "I earned a Bachelor of Engineering in Electronics and Communication from Thapar Institute with an 8.55 CGPA. I completed Classes X and XII at Ryan International School in Chandigarh and continue learning through cloud certification and hands-on engineering projects.",
   },
   {
     id: "leadership",
     tier: 2,
     prompts: ["How does he show leadership?", "What does ownership look like for him?", "Can he lead without a title?"],
     answer:
-      "He takes unclear problems from discovery through production, creates structure around them, and keeps product and engineering decisions aligned. He also helps unblock teammates by sharing technical context, surfacing risks early, and leaving systems easier to operate than he found them.",
+      "I take unclear problems from discovery through production, create structure around them, and keep product and engineering decisions aligned. I also help unblock teammates by sharing technical context, surfacing risks early, and leaving systems easier to operate than I found them.",
   },
   {
     id: "decisions",
     tier: 2,
     prompts: ["How does he balance speed and quality?", "What is his delivery approach?", "How does he make engineering trade-offs?"],
     answer:
-      "He prefers shipping the smallest safe increment, validating its value with real feedback, and improving it iteratively. The exact trade-off is guided by user impact and operational risk, so speed never means ignoring security, observability, or a safe rollback path.",
+      "I prefer shipping the smallest safe increment, validating its value with real feedback, and improving it iteratively. I guide each trade-off by user impact and operational risk, so speed never means ignoring security, observability, or a safe rollback path.",
   },
   {
     id: "incidents",
     tier: 2,
     prompts: ["How does he handle production incidents?", "What happens when production behaves unexpectedly?", "How does he debug failures?"],
     answer:
-      "He first contains user impact, then uses logs, dashboards, and reproducible evidence to isolate the root cause before changing code. After the fix, he adds regression coverage, verifies production behavior, and documents the learning so the same class of failure is less likely to return.",
+      "I first contain user impact, then use logs, dashboards, and reproducible evidence to isolate the root cause before changing code. After the fix, I add regression coverage, verify production behavior, and document the learning so the same class of failure is less likely to return.",
   },
   {
     id: "growth",
     tier: 3,
     prompts: ["What is he learning next?", "Where is he growing technically?", "What topics interest him now?"],
     answer:
-      "He is deepening his system-design knowledge across distributed caching, idempotency, data access patterns, and resilient service architecture. In parallel, he continues exploring frontend architecture, browser performance, and ways to make responsive products feel faster and easier to use.",
+      "I am deepening my system-design knowledge across distributed caching, idempotency, data access patterns, and resilient service architecture. In parallel, I continue exploring frontend architecture, browser performance, and ways to make responsive products feel faster and easier to use.",
   },
   {
     id: "culture",
     tier: 3,
     prompts: ["What team culture suits him?", "Where does he do his best work?", "What environment is he looking for?"],
     answer:
-      "He thrives in teams that combine meaningful ownership, close collaboration, difficult problems at scale, and frequent delivery. His ideal environment gives engineers direct context about users, encourages thoughtful technical debate, and trusts them to carry solutions through production.",
+      "I thrive in teams that combine meaningful ownership, close collaboration, difficult problems at scale, and frequent delivery. My ideal environment gives engineers direct context about users, encourages thoughtful technical debate, and trusts them to carry solutions through production.",
   },
 ];
 
@@ -339,6 +360,15 @@ const mobileNavItems = [
 
 function Arrow({ diagonal = false }) {
   return <span aria-hidden="true">{diagonal ? "↗" : "→"}</span>;
+}
+
+function EmphasizedText({ text }) {
+  const terms = /(Intuit|100\+|60\+|1,000\+|20\+|60%|70%|30\+|98%|React|TypeScript|Redux|Java|Spring Boot|AWS|Elasticsearch|Redis)/gi;
+  const exactTerm = /^(Intuit|100\+|60\+|1,000\+|20\+|60%|70%|30\+|98%|React|TypeScript|Redux|Java|Spring Boot|AWS|Elasticsearch|Redis)$/i;
+
+  return text.split(terms).map((part, index) =>
+    exactTerm.test(part) ? <strong key={`${part}-${index}`}>{part}</strong> : part,
+  );
 }
 
 function NavIcon({ name }) {
@@ -389,7 +419,7 @@ function App() {
   );
   const [istTime, setIstTime] = useState("");
   const [assistantReply, setAssistantReply] = useState(
-    "Harshit’s work centers on user ease: removing friction from complex workflows while engineering the reliability needed behind the interface. He enjoys owning products end to end—from understanding the problem and shaping the experience to building, observing, and improving the production system.",
+    "My work centers on user ease: removing friction from complex workflows while engineering the reliability needed behind the interface. I enjoy owning products end to end—from understanding the problem and shaping the experience to building, observing, and improving the production system.",
   );
   const [assistantQuestions] = useState(createAssistantSuggestions);
   const cursorRef = useRef(null);
@@ -696,8 +726,8 @@ function App() {
                 <span className="now-widget__icon">⌁</span>
                 <span>
                   <small>CURRENTLY LEARNING</small>
-                  <strong>{learningTopics[topicIndex]}</strong>
-                  <em>Always sharpening the system</em>
+                  <strong>{learningTopics[topicIndex].title}</strong>
+                  <em>{learningTopics[topicIndex].summary}</em>
                 </span>
               </div>
             </div>
@@ -745,9 +775,9 @@ function App() {
               </div>
             </div>
             <div className="assistant-card__body">
-              <div className="assistant-answer">
+              <div className="assistant-answer" key={assistantReply}>
                 <span aria-hidden="true">✦</span>
-                <p>{assistantReply}</p>
+                <p><EmphasizedText text={assistantReply} /></p>
               </div>
               <div className="assistant-suggestions-title">
                 <span>Suggested questions</span>
@@ -2578,9 +2608,12 @@ const styles = `
     margin: 0 0 22px;
     padding: 16px;
     border: 1px solid rgba(138,180,248,.14);
+    border: 1px solid rgba(138,180,248,.14);
+    border-left: 3px solid var(--blue);
     border-radius: 18px 18px 18px 6px;
     background: rgba(138,180,248,.055);
     min-width: 0;
+    animation: assistantAnswerIn .35s ease both;
   }
 
   .assistant-answer > span {
@@ -2600,8 +2633,22 @@ const styles = `
     margin: 1px 0 0;
     color: #d8e2f2;
     font-size: 17px;
+    font-weight: 500;
     line-height: 1.65;
     overflow-wrap: anywhere;
+  }
+
+  .assistant-answer p strong {
+    padding: 0 .12em;
+    color: #a9cbff;
+    font-weight: 750;
+    background: rgba(138,180,248,.09);
+    border-radius: 4px;
+  }
+
+  @keyframes assistantAnswerIn {
+    from { opacity: 0; transform: translateY(5px); }
+    to { opacity: 1; transform: translateY(0); }
   }
 
   .assistant-suggestions-title {
@@ -2632,6 +2679,7 @@ const styles = `
     color: #c7d8ee;
     background: rgba(138,180,248,.06);
     font-size: 13px;
+    font-weight: 600;
     cursor: pointer;
     transition: background .2s ease;
   }
@@ -3039,8 +3087,16 @@ const styles = `
     border-color: rgba(55,105,174,.13);
   }
 
-  :root[data-theme="light"] .assistant-answer { background: rgba(55,105,174,.05); }
+  :root[data-theme="light"] .assistant-answer {
+    border-color: rgba(55,105,174,.16);
+    border-left-color: var(--blue);
+    background: rgba(55,105,174,.05);
+  }
   :root[data-theme="light"] .assistant-answer p { color: #35475e; }
+  :root[data-theme="light"] .assistant-answer p strong {
+    color: #174f91;
+    background: rgba(55,105,174,.09);
+  }
   :root[data-theme="light"] .assistant-options button { color: #315278; }
   :root[data-theme="light"] .email-button { color: #f1f3f4; }
 
@@ -3238,14 +3294,32 @@ const styles = `
     .metric-widget__caption { max-width: 125px; font-size: 10px; line-height: 1.45; }
     .experience-signal { right: 12px; bottom: 14px; transform: scale(.75); transform-origin: right bottom; }
     .scale-rings { right: -35px; bottom: -44px; transform: scale(.75); }
-    .now-widget { grid-template-columns: repeat(2, minmax(0, 1fr)); padding: 0; }
-    .now-widget__item { gap: 7px; min-width: 0; min-height: 72px; padding: 10px 11px; }
-    .now-widget__item:first-child { border-right: 1px solid var(--line); border-bottom: 0; }
-    .now-widget__icon { display: grid; flex-basis: 32px; width: 32px; height: 32px; }
-    .equalizer { display: none; }
+    .now-widget {
+      grid-template-columns: 1fr;
+      grid-template-rows: repeat(2, minmax(76px, auto));
+      padding: 0;
+    }
+    .now-widget__item { gap: 11px; min-width: 0; min-height: 76px; padding: 12px 16px; }
+    .now-widget__item:first-child {
+      border-right: 0;
+      border-bottom: 1px solid var(--line);
+    }
+    .now-widget__icon { display: grid; flex-basis: 34px; width: 34px; height: 34px; }
+    .equalizer { display: flex; }
     .now-widget__item small { font-size: 8px; }
-    .now-widget__item strong { font-size: 12px; }
-    .now-widget__item em { font-size: 9px; }
+    .now-widget__item strong {
+      font-size: 13px;
+      text-overflow: unset;
+      white-space: normal;
+    }
+    .now-widget__item em {
+      font-size: 10px;
+      line-height: 1.35;
+    }
+    .now-widget__item--learning em {
+      text-overflow: unset;
+      white-space: normal;
+    }
     .impact-strip { grid-template-columns: 1fr 1fr; gap: 28px 10px; padding: 30px 20px; }
     .impact-strip > i { display: none; }
     .impact-strip strong { font-size: 21px; }
