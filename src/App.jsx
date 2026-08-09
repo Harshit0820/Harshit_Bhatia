@@ -1086,7 +1086,7 @@ const mobileNavItems = [
   { id: "home", label: "Home" },
   { id: "experience", label: "Experience" },
   { id: "assistant", label: "Ask AI", featured: true },
-  { id: "work", label: "Projects" },
+  { id: "skills", label: "Skills" },
   { id: "contact", label: "Contact" },
 ];
 
@@ -1122,6 +1122,14 @@ function EmphasizedText({ text }) {
 }
 
 function NavIcon({ name }) {
+  if (name === "skills") {
+    return (
+      <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+        <path d="M1 0 0 1l2.2 3.08a1 1 0 0 0 .82.42h.07a1 1 0 0 1 .7.29l2.68 2.68-2.62 2.65A3 3 0 1 0 5.88 12.15l2.65-2.62.97.97-.3.91a1 1 0 0 0 .24 1.03l3.35 3.35a1 1 0 0 0 1.42 0l1.58-1.58a1 1 0 0 0 0-1.42l-3.35-3.35a1 1 0 0 0-1.03-.24l-.91.3-.96-.96 2.68-2.68A3 3 0 0 0 16 3c0-.27-.04-.53-.1-.78l-2.14 2.14-2.12-2.12L13.78.1a3 3 0 0 0-3.68 3.68L7.46 6.46 4.79 3.79a1 1 0 0 1-.29-.7v-.08a1 1 0 0 0-.42-.81L1 0Z" />
+      </svg>
+    );
+  }
+
   const paths = {
     home: "M12 3 2 11.5V21h7v-6h6v6h7v-9.5L12 3Z",
     experience: "M20 6h-4V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2H4a2 2 0 0 0-2 2v4h20V8a2 2 0 0 0-2-2Zm-6 0h-4V4h4v2Zm8 8H2v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6Z",
