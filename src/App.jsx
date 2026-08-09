@@ -1789,7 +1789,7 @@ function App() {
           </div>
 
           <div className="cert-row reveal">
-            <span className="cert-row__label">CERTIFIED & RECOGNIZED</span>
+            <span className="cert-row__label">CERTIFICATIONS</span>
             <div>
               <a
                 className="cert-badge cert-badge--primary"
@@ -2510,11 +2510,11 @@ const styles = `
     top: 27px;
     right: 32px;
     z-index: 3;
-    width: 84px;
-    height: 84px;
+    width: 106px;
+    height: 106px;
     overflow: hidden;
     border: 5px solid #f5f7fa;
-    border-radius: 50%;
+    border-radius: 34px;
     background: var(--blue);
     box-shadow: 0 14px 32px rgba(0,0,0,.3), 8px 6px 0 -2px var(--blue);
     transition: transform .35s cubic-bezier(.2,.8,.2,1);
@@ -2566,10 +2566,10 @@ const styles = `
   }
 
   .pixel-orbit--one {
-    top: 34px;
-    right: -60px;
-    width: 210px;
-    height: 88px;
+    top: 24px;
+    right: -78px;
+    width: 270px;
+    height: 112px;
     background: var(--blue);
     transform: rotate(-18deg);
     opacity: .75;
@@ -2577,10 +2577,10 @@ const styles = `
   }
 
   .pixel-orbit--two {
-    top: 114px;
-    right: 60px;
-    width: 76px;
-    height: 76px;
+    top: 132px;
+    right: 72px;
+    width: 94px;
+    height: 94px;
     background: var(--red);
     opacity: .82;
     animation: orbit-drift 5s 1s ease-in-out infinite reverse;
@@ -2882,6 +2882,112 @@ const styles = `
     font-weight: 600;
     letter-spacing: -.055em;
     line-height: .98;
+  }
+
+  #assistant,
+  #experience,
+  #work,
+  #skills,
+  #education {
+    position: relative;
+    isolation: isolate;
+  }
+
+  #assistant > *,
+  #experience > *,
+  #work > *,
+  #skills > *,
+  #education > * {
+    position: relative;
+    z-index: 1;
+  }
+
+  #assistant::before,
+  #experience::before,
+  #work::before,
+  #skills::before,
+  #education::before,
+  #assistant::after,
+  #experience::after,
+  #work::after,
+  #skills::after,
+  #education::after {
+    content: "";
+    position: absolute;
+    z-index: 0;
+    filter: brightness(.52) saturate(.7);
+    pointer-events: none;
+  }
+
+  #assistant::before,
+  #experience::before,
+  #work::before,
+  #skills::before,
+  #education::before {
+    top: var(--section-orbit-top, 82px);
+    right: var(--section-orbit-right, 12px);
+    width: var(--section-orbit-width, 190px);
+    height: var(--section-orbit-height, 72px);
+    border: 2px solid var(--section-orbit-color, var(--blue));
+    border-radius: var(--section-orbit-radius, 999px);
+    opacity: .16;
+    rotate: var(--section-orbit-rotate, -9deg);
+    animation: section-orbit-drift 8s ease-in-out infinite;
+  }
+
+  #assistant::after,
+  #experience::after,
+  #work::after,
+  #skills::after,
+  #education::after {
+    top: var(--section-dot-top, 128px);
+    right: var(--section-dot-right, 76px);
+    width: var(--section-dot-size, 42px);
+    height: var(--section-dot-size, 42px);
+    border-radius: var(--section-dot-radius, 50%);
+    background: var(--section-orbit-color, var(--blue));
+    opacity: .075;
+    animation: section-dot-float 6s ease-in-out infinite;
+  }
+
+  #assistant {
+    --section-orbit-color: var(--yellow);
+    --section-orbit-width: 230px;
+    --section-orbit-height: 82px;
+    --section-orbit-top: 42px;
+    --section-orbit-rotate: 7deg;
+  }
+
+  #work {
+    --section-orbit-color: var(--red);
+    --section-orbit-width: 124px;
+    --section-orbit-height: 124px;
+    --section-orbit-radius: 50%;
+    --section-orbit-rotate: 0deg;
+    --section-dot-right: 118px;
+  }
+
+  #skills {
+    --section-orbit-color: var(--green);
+    --section-orbit-width: 220px;
+    --section-orbit-height: 54px;
+    --section-orbit-rotate: 5deg;
+  }
+
+  #education {
+    --section-orbit-color: var(--yellow);
+    --section-orbit-width: 158px;
+    --section-orbit-height: 78px;
+    --section-orbit-radius: 46px 999px 999px 999px;
+    --section-orbit-rotate: -6deg;
+  }
+
+  @keyframes section-orbit-drift {
+    50% { translate: -7px 6px; }
+  }
+
+  @keyframes section-dot-float {
+    50% { translate: 4px -8px; scale: .84; }
   }
 
   .section-heading > p {
@@ -3344,7 +3450,7 @@ const styles = `
 
   .cert-row {
     display: grid;
-    grid-template-columns: 220px 1fr;
+    grid-template-columns: 270px 1fr;
     gap: 20px;
     margin-top: 18px;
     padding: 25px;
@@ -3354,11 +3460,25 @@ const styles = `
   }
 
   .cert-row__label {
-    color: var(--blue);
-    font-family: "DM Mono", monospace;
-    font-size: 11px;
-    font-weight: 500;
-    letter-spacing: .12em;
+    display: flex;
+    align-items: center;
+    align-self: start;
+    gap: 11px;
+    color: var(--text);
+    font-size: 20px;
+    font-weight: 650;
+    letter-spacing: -.025em;
+    line-height: 1.15;
+  }
+
+  .cert-row__label::before {
+    content: "";
+    flex: 0 0 10px;
+    width: 10px;
+    height: 10px;
+    border-radius: 3px;
+    background: var(--blue);
+    box-shadow: 5px 5px 0 -1px var(--yellow);
   }
 
   .cert-row > div {
@@ -3795,12 +3915,12 @@ const styles = `
   .overview--open .overview__identity { animation: modal-rise .55s .12s both; }
 
   .overview__avatar {
-    flex: 0 0 86px;
-    width: 86px;
-    height: 86px;
+    flex: 0 0 104px;
+    width: 104px;
+    height: 104px;
     overflow: hidden;
     border: 4px solid #f5f7fa;
-    border-radius: 50%;
+    border-radius: 32px;
     background: var(--blue);
     box-shadow: 7px 7px 0 -2px var(--blue);
   }
@@ -4215,9 +4335,9 @@ const styles = `
     .accent-word::after { right: -13px; width: 9px; height: 9px; }
     .widget-grid { display: grid; grid-template-rows: 218px 118px auto; gap: 8px; }
     .name-widget { padding: 19px; }
-    .profile-orb { top: 21px; right: 21px; width: 68px; height: 68px; border-width: 4px; }
-    .pixel-orbit--one { width: 160px; height: 68px; }
-    .pixel-orbit--two { top: 95px; right: 45px; width: 55px; height: 55px; }
+    .profile-orb { top: 18px; right: 18px; width: 80px; height: 80px; border-width: 4px; border-radius: 25px; }
+    .pixel-orbit--one { top: 20px; right: -58px; width: 194px; height: 82px; }
+    .pixel-orbit--two { top: 104px; right: 46px; width: 68px; height: 68px; }
     .name-widget__name { font-size: 34px; }
     .name-widget__role { max-width: 230px; font-size: 12px; line-height: 1.45; }
     .name-widget__action { font-size: 12px; }
@@ -4264,6 +4384,16 @@ const styles = `
     .impact-strip span { font-size: 11px; text-align: center; }
     .section-heading { margin-bottom: 20px; }
     .section-heading h2 { font-size: 40px; }
+    #assistant::before,
+    #experience::before,
+    #work::before,
+    #skills::before,
+    #education::before { scale: .72; transform-origin: right top; }
+    #assistant::after,
+    #experience::after,
+    #work::after,
+    #skills::after,
+    #education::after { scale: .72; transform-origin: center; }
     .timeline, .earlier-grid, .project-grid, .skills-grid { gap: 10px; }
     .job-card { grid-template-columns: 1fr; gap: 13px; padding: 18px; border-radius: 23px; }
     .job-card__meta, .job-card__content { grid-column: 1; }
@@ -4295,6 +4425,8 @@ const styles = `
     .skill-list { gap: 6px; }
     .skill-list span { padding: 7px 9px; font-size: 12px; }
     .cert-row { grid-template-columns: 1fr; gap: 14px; padding: 17px; }
+    .cert-row__label { gap: 9px; font-size: 18px; }
+    .cert-row__label::before { flex-basis: 9px; width: 9px; height: 9px; }
     .cert-row > div { display: grid; grid-template-columns: 1fr; gap: 7px; }
     .cert-badge { width: 100%; min-width: 0; }
     .education-item,
@@ -4361,7 +4493,7 @@ const styles = `
     .overview { padding: 10px; }
     .overview__card { max-height: calc(100dvh - 20px); padding: 28px 22px; border-radius: 30px; }
     .overview__identity { align-items: flex-start; gap: 15px; padding-right: 35px; }
-    .overview__avatar { flex-basis: 65px; width: 65px; height: 65px; border-width: 3px; }
+    .overview__avatar { flex-basis: 78px; width: 78px; height: 78px; border-width: 3px; border-radius: 24px; }
     .overview__card h2 { font-size: 33px; }
     .overview__hello { font-size: 8px; }
     .overview__status { font-size: 9px; }
@@ -4380,7 +4512,7 @@ const styles = `
     .hero__heading h1 { font-size: 41px; }
     .widget-grid { grid-template-rows: 212px 114px auto; }
     .name-widget__name { max-width: 230px; font-size: 31px; }
-    .profile-orb { width: 62px; height: 62px; }
+    .profile-orb { width: 74px; height: 74px; }
     .metric-widget strong { font-size: 34px; }
     .now-widget__item strong { font-size: 11px; }
     .impact-strip { padding-inline: 14px; }
