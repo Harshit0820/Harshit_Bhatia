@@ -190,31 +190,31 @@ const songs = [
 const learningTopics = [
   {
     title: "Consistent hashing at scale",
-    summary: "Distributing data while minimizing costly remapping.",
+    summary: "How distributed systems rebalance nodes while moving as little cached data as possible.",
   },
   {
     title: "Event-driven system design",
-    summary: "Building loosely coupled services through reliable events.",
+    summary: "Designing loosely coupled services with durable events, retries, and safe failure handling.",
   },
   {
     title: "Browser rendering internals",
-    summary: "Understanding how browsers turn code into responsive pixels.",
+    summary: "How browsers parse, layout, paint, and composite pages into responsive user experiences.",
   },
   {
     title: "Idempotent API design",
-    summary: "Making repeated requests safe and predictable.",
+    summary: "Making retries safe so repeated requests cannot create duplicate or inconsistent results.",
   },
   {
     title: "Distributed caching patterns",
-    summary: "Reducing latency without sacrificing data consistency.",
+    summary: "Using cache-aside, invalidation, and eviction strategies to reduce latency safely.",
   },
   {
     title: "React rendering performance",
-    summary: "Preventing unnecessary work for faster interfaces.",
+    summary: "Finding unnecessary renders and optimizing state, memoization, and component boundaries.",
   },
   {
     title: "Database indexing strategies",
-    summary: "Choosing indexes that accelerate real query patterns.",
+    summary: "Matching indexes to real query patterns while balancing read speed and write cost.",
   },
 ];
 
@@ -1878,6 +1878,14 @@ const styles = `
     white-space: nowrap;
   }
 
+  .now-widget__item--learning em {
+    display: -webkit-box;
+    line-height: 1.35;
+    white-space: normal;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+  }
+
   .equalizer {
     display: flex;
     align-items: center;
@@ -3317,8 +3325,11 @@ const styles = `
       line-height: 1.35;
     }
     .now-widget__item--learning em {
+      display: block;
+      overflow: visible;
       text-overflow: unset;
       white-space: normal;
+      -webkit-line-clamp: unset;
     }
     .impact-strip { grid-template-columns: 1fr 1fr; gap: 28px 10px; padding: 30px 20px; }
     .impact-strip > i { display: none; }
