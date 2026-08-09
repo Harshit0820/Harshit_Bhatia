@@ -236,105 +236,105 @@ const assistantQuestionBank = [
     tier: 1,
     prompts: ["Why should we hire Harshit?", "What makes Harshit a strong fit?", "Give me the recruiter summary"],
     answer:
-      "I combine three years of enterprise delivery for Intuit with end-to-end full-stack ownership and measurable production impact. I can move from an ambiguous user need to a clear React experience, dependable Spring Boot services, cloud infrastructure, testing, and production observability.",
+      "Harshit combines three years of enterprise delivery for Intuit with end-to-end full-stack ownership and measurable production impact. He can move from an ambiguous user need to a clear React experience, dependable Spring Boot services, cloud infrastructure, testing, and production observability.",
   },
   {
     id: "philosophy",
     tier: 1,
     prompts: ["What drives his work?", "What is his product philosophy?", "What does Harshit care about most?"],
     answer:
-      "My main focus is user ease: fewer unnecessary steps, clear feedback, and workflows people can understand quickly. I enjoy hiding technical complexity behind simple product experiences while ensuring the services, data layers, and cloud systems underneath remain reliable.",
+      "Harshit’s main focus is user ease: fewer unnecessary steps, clear feedback, and workflows people can understand quickly. He enjoys hiding technical complexity behind simple product experiences while ensuring the services, data layers, and cloud systems underneath remain reliable.",
   },
   {
     id: "intuit",
     tier: 1,
     prompts: ["What has he delivered at Intuit?", "Show his Intuit impact", "What changed because of his work?"],
     answer:
-      "At Intuit, I have shipped 100+ features, built secure search across 60+ catalogs, and enabled real-time content previews for 1,000+ users across 20+ teams. My resilience work reduced HTTP 500 errors by 60% and production alerts by 70%, while better dashboards made platform behavior easier to understand.",
+      "At Intuit, Harshit has shipped 100+ features, built secure search across 60+ catalogs, and enabled real-time content previews for 1,000+ users across 20+ teams. His resilience work reduced HTTP 500 errors by 60% and production alerts by 70%, while better dashboards made platform behavior easier to understand.",
   },
   {
     id: "stack",
     tier: 2,
     prompts: ["What is his strongest stack?", "Which technologies does he use?", "Summarize his technical toolkit"],
     answer:
-      "My core stack is React, TypeScript, Redux, Java, Spring Boot, and REST APIs, supported by AWS and container-based delivery. For data-intensive systems, I work across MySQL, PostgreSQL, DynamoDB, Redis, Elasticsearch, and event-driven messaging based on the access pattern.",
+      "Harshit’s core stack is React, TypeScript, Redux, Java, Spring Boot, and REST APIs, supported by AWS and container-based delivery. For data-intensive systems, he works across MySQL, PostgreSQL, DynamoDB, Redis, Elasticsearch, and event-driven messaging based on the access pattern.",
   },
   {
     id: "systems",
     tier: 2,
     prompts: ["Can he build distributed systems?", "What backend systems has he built?", "Show his system-design experience"],
     answer:
-      "I have built low-latency URL shortening, event-driven publishing, resilient services with circuit breakers, secure search, and cache-backed APIs. My approach considers failure modes, observability, access control, rollback strategies, and the simplest architecture that can scale safely.",
+      "Harshit has built low-latency URL shortening, event-driven publishing, resilient services with circuit breakers, secure search, and cache-backed APIs. His approach considers failure modes, observability, access control, rollback strategies, and the simplest architecture that can scale safely.",
   },
   {
     id: "frontend",
     tier: 2,
     prompts: ["What is his frontend experience?", "Can he own product interfaces?", "How strong is he with React?"],
     answer:
-      "I have delivered 100+ React and Redux features, built real-time preview workflows and finance dashboards, and integrated complex REST APIs. I prioritize performance, responsive behavior, reusable components, predictable state, and clear feedback for users.",
+      "Harshit has delivered 100+ React and Redux features, built real-time preview workflows and finance dashboards, and integrated complex REST APIs. He prioritizes performance, responsive behavior, reusable components, predictable state, and clear feedback for users.",
   },
   {
     id: "projects",
     tier: 2,
     prompts: ["Which project should I see first?", "Show his best projects", "Where can I see practical work?"],
     answer:
-      "Start with Vera to see my work in applied AI, automated machine learning, and conversational dataset exploration. My Global Search work demonstrates enterprise scale and access control, while Web Chat, Cats vs Dogs, and Car Review show my frontend, machine-learning, and full-stack foundations with available source links.",
+      "Start with Vera to see Harshit’s work in applied AI, automated machine learning, and conversational dataset exploration. His Global Search work demonstrates enterprise scale and access control, while Web Chat, Cats vs Dogs, and Car Review show his frontend, machine-learning, and full-stack foundations with available source links.",
   },
   {
     id: "reliability",
     tier: 2,
     prompts: ["How does he improve reliability?", "Show production engineering impact", "Does he work on quality and security?"],
     answer:
-      "I reduced HTTP 500s by 60%, production alerts by 70%, and resolved 30+ AWS security findings by treating reliability as a product requirement. I also expanded Cypress, Jest, and JUnit automation, improved coverage, and used production telemetry to prevent regressions.",
+      "Harshit reduced HTTP 500s by 60%, production alerts by 70%, and resolved 30+ AWS security findings by treating reliability as a product requirement. He also expanded Cypress, Jest, and JUnit automation, improved coverage, and used production telemetry to prevent regressions.",
   },
   {
     id: "earlier",
     tier: 3,
     prompts: ["What did he do before Accenture?", "Show earlier experience", "What is his AI background?"],
     answer:
-      "Before Accenture, I built a multi-language coding and learning platform at MeritHub and authored practical technical coursework. At Samsung R&D, I developed an English–Punjabi speech recognition model using feature extraction and machine learning, reaching 98% transcription accuracy.",
+      "Before Accenture, Harshit built a multi-language coding and learning platform at MeritHub and authored practical technical coursework. At Samsung R&D, he developed an English–Punjabi speech recognition model using feature extraction and machine learning, reaching 98% transcription accuracy.",
   },
   {
     id: "education",
     tier: 3,
     prompts: ["Where did he study?", "Summarize his education", "What is his academic background?"],
     answer:
-      "I earned a Bachelor of Engineering in Electronics and Communication from Thapar Institute with an 8.55 CGPA. I completed Classes X and XII at Ryan International School in Chandigarh and continue learning through cloud certification and hands-on engineering projects.",
+      "Harshit earned a Bachelor of Engineering in Electronics and Communication from Thapar Institute with an 8.55 CGPA. He completed Classes X and XII at Ryan International School in Chandigarh and continues learning through cloud certification and hands-on engineering projects.",
   },
   {
     id: "leadership",
     tier: 2,
     prompts: ["How does he show leadership?", "What does ownership look like for him?", "Can he lead without a title?"],
     answer:
-      "I take unclear problems from discovery through production, create structure around them, and keep product and engineering decisions aligned. I also help unblock teammates by sharing technical context, surfacing risks early, and leaving systems easier to operate than I found them.",
+      "Harshit takes unclear problems from discovery through production, creates structure around them, and keeps product and engineering decisions aligned. He also helps unblock teammates by sharing technical context, surfacing risks early, and leaving systems easier to operate than he found them.",
   },
   {
     id: "decisions",
     tier: 2,
     prompts: ["How does he balance speed and quality?", "What is his delivery approach?", "How does he make engineering trade-offs?"],
     answer:
-      "I prefer shipping the smallest safe increment, validating its value with real feedback, and improving it iteratively. I guide each trade-off by user impact and operational risk, so speed never means ignoring security, observability, or a safe rollback path.",
+      "Harshit prefers shipping the smallest safe increment, validating its value with real feedback, and improving it iteratively. He guides each trade-off by user impact and operational risk, so speed never means ignoring security, observability, or a safe rollback path.",
   },
   {
     id: "incidents",
     tier: 2,
     prompts: ["How does he handle production incidents?", "What happens when production behaves unexpectedly?", "How does he debug failures?"],
     answer:
-      "I first contain user impact, then use logs, dashboards, and reproducible evidence to isolate the root cause before changing code. After the fix, I add regression coverage, verify production behavior, and document the learning so the same class of failure is less likely to return.",
+      "Harshit first contains user impact, then uses logs, dashboards, and reproducible evidence to isolate the root cause before changing code. After the fix, he adds regression coverage, verifies production behavior, and documents the learning so the same class of failure is less likely to return.",
   },
   {
     id: "growth",
     tier: 3,
     prompts: ["What is he learning next?", "Where is he growing technically?", "What topics interest him now?"],
     answer:
-      "I am deepening my system-design knowledge across distributed caching, idempotency, data access patterns, and resilient service architecture. In parallel, I continue exploring frontend architecture, browser performance, and ways to make responsive products feel faster and easier to use.",
+      "Harshit is deepening his system-design knowledge across distributed caching, idempotency, data access patterns, and resilient service architecture. In parallel, he continues exploring frontend architecture, browser performance, and ways to make responsive products feel faster and easier to use.",
   },
   {
     id: "culture",
     tier: 3,
     prompts: ["What team culture suits him?", "Where does he do his best work?", "What environment is he looking for?"],
     answer:
-      "I thrive in teams that combine meaningful ownership, close collaboration, difficult problems at scale, and frequent delivery. My ideal environment gives engineers direct context about users, encourages thoughtful technical debate, and trusts them to carry solutions through production.",
+      "Harshit thrives in teams that combine meaningful ownership, close collaboration, difficult problems at scale, and frequent delivery. His ideal environment gives engineers direct context about users, encourages thoughtful technical debate, and trusts them to carry solutions through production.",
   },
 ];
 
@@ -363,8 +363,26 @@ function Arrow({ diagonal = false }) {
 }
 
 function EmphasizedText({ text }) {
-  const terms = /(Intuit|100\+|60\+|1,000\+|20\+|60%|70%|30\+|98%|React|TypeScript|Redux|Java|Spring Boot|AWS|Elasticsearch|Redis)/gi;
-  const exactTerm = /^(Intuit|100\+|60\+|1,000\+|20\+|60%|70%|30\+|98%|React|TypeScript|Redux|Java|Spring Boot|AWS|Elasticsearch|Redis)$/i;
+  const highlightTerms = [
+    "three years", "Intuit", "end-to-end full-stack ownership", "production impact",
+    "user ease", "clear feedback", "reliable",
+    "100+ features", "60+ catalogs", "1,000+ users", "20+ teams", "60%", "70%", "30+", "98%",
+    "React", "TypeScript", "Redux", "Java", "Spring Boot", "REST APIs", "AWS",
+    "MySQL", "PostgreSQL", "DynamoDB", "Redis", "Elasticsearch", "event-driven messaging",
+    "low-latency", "circuit breakers", "failure modes", "observability", "access control", "rollback strategies",
+    "performance", "responsive behavior", "reusable components", "predictable state",
+    "Vera", "applied AI", "Global Search", "enterprise scale",
+    "reliability", "Cypress", "Jest", "JUnit", "production telemetry",
+    "Accenture", "MeritHub", "Samsung R&D", "speech recognition", "Bachelor of Engineering", "Thapar Institute",
+    "discovery through production", "technical context", "surfacing risks early",
+    "smallest safe increment", "user impact", "operational risk", "security", "safe rollback path",
+    "root cause", "regression coverage", "production behavior",
+    "system-design", "distributed caching", "idempotency", "resilient service architecture",
+    "meaningful ownership", "difficult problems at scale", "thoughtful technical debate",
+  ];
+  const escapedTerms = highlightTerms.map((term) => term.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"));
+  const terms = new RegExp(`(${escapedTerms.join("|")})`, "gi");
+  const exactTerm = new RegExp(`^(${escapedTerms.join("|")})$`, "i");
 
   return text.split(terms).map((part, index) =>
     exactTerm.test(part) ? <strong key={`${part}-${index}`}>{part}</strong> : part,
@@ -419,7 +437,7 @@ function App() {
   );
   const [istTime, setIstTime] = useState("");
   const [assistantReply, setAssistantReply] = useState(
-    "My work centers on user ease: removing friction from complex workflows while engineering the reliability needed behind the interface. I enjoy owning products end to end—from understanding the problem and shaping the experience to building, observing, and improving the production system.",
+    "Harshit’s work centers on user ease: removing friction from complex workflows while engineering the reliability needed behind the interface. He enjoys owning products end to end—from understanding the problem and shaping the experience to building, observing, and improving the production system.",
   );
   const [assistantQuestions] = useState(createAssistantSuggestions);
   const cursorRef = useRef(null);
