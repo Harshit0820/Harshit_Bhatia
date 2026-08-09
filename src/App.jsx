@@ -688,9 +688,9 @@ function App() {
               systems feel <span className="accent-word">simple.</span>
             </h1>
             <p className="hero__intro">
-              Full-stack engineer building high-impact enterprise platforms for Intuit.
-              My focus is turning complex workflows into products people can understand
-              and use effortlessly—backed by resilient services and cloud systems that scale.
+              Full-stack engineer building high-impact products for Intuit. I turn complex
+              workflows into simple user experiences, backed by reliable services and scalable
+              cloud systems.
             </p>
           </div>
 
