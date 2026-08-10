@@ -1640,6 +1640,7 @@ function App() {
               </article>
             ))}
           </div>
+
         </section>
 
         <section className="section-shell content-section" id="work">
@@ -1735,7 +1736,15 @@ function App() {
                 target="_blank"
                 rel="noreferrer"
               >
-                HPE <small>C++ Assessment · View credential ↗</small>
+                Hewlett Packard Enterprise (HPE) <small>C++ Assessment · View credential ↗</small>
+              </a>
+              <a
+                className="cert-badge"
+                href="https://drive.google.com/file/d/1qR3NRIU3u_V-rygRAADzIiYFQpwwkKrx/view"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Samsung R&D Institute <small>Certificate of Excellence · View credential ↗</small>
               </a>
             </div>
           </div>
