@@ -42,53 +42,9 @@ const experience = [
   },
 ];
 
-const earlierExperience = [
-  {
-    period: "Jan 2023 — Jun 2023",
-    role: "Software Engineer Intern",
-    company: "MeritHub Technologies",
-    mark: "M",
-    summary:
-      "Built a multi-language coding platform and authored technical courses.",
-    tools: ["Product Engineering", "Java", "Python"],
-  },
-  {
-    period: "May 2021 — Nov 2021",
-    role: "Researcher & Developer",
-    company: "Samsung R&D Institute India",
-    mark: "S",
-    summary:
-      "Built an English–Punjabi speech recognition model with 98% transcription accuracy.",
-    tools: ["Machine Learning", "Python", "Keras"],
-  },
-  {
-    period: "Jul 2020 — Aug 2020",
-    role: "Engineering Intern",
-    company: "Vardhan Consulting Engineers",
-    mark: "V",
-    summary:
-      "Early engineering and consulting experience in a remote team.",
-    tools: ["Engineering"],
-  },
-];
-
 const projects = [
   {
     id: "01",
-    title: "Vera",
-    eyebrow: "AI · AUTOML",
-    description:
-      "An AI-powered AutoML platform that takes raw CSV data through intelligent preprocessing, feature engineering, and automated model training.",
-    outcomes: [
-      "Automates preprocessing and feature engineering through a multi-model LLM pipeline.",
-      "Trains and compares machine-learning models from uploaded CSV datasets.",
-      "Adds a RAG assistant for exploring data and model results in natural language.",
-    ],
-    tools: ["Flask", "MongoDB", "Scikit-Learn", "LangChain"],
-    color: "yellow",
-  },
-  {
-    id: "02",
     title: "Global Search",
     eyebrow: "INTUIT · ENTERPRISE SEARCH",
     description:
@@ -102,7 +58,7 @@ const projects = [
     color: "blue",
   },
   {
-    id: "03",
+    id: "02",
     title: "Web Chat",
     eyebrow: "SOCIAL · FRONTEND",
     description:
@@ -117,22 +73,7 @@ const projects = [
     link: "https://github.com/Harshit0820/Web-Chat",
   },
   {
-    id: "04",
-    title: "Cats vs Dogs",
-    eyebrow: "MACHINE LEARNING · VISION",
-    description:
-      "An image classification pipeline using neural networks, automated preprocessing, and data augmentation to classify unseen images.",
-    outcomes: [
-      "Builds a complete workflow from image preprocessing to model inference.",
-      "Uses augmentation to improve generalization on unseen images.",
-      "Explores model tuning with TensorFlow, Keras, OpenCV, and NumPy.",
-    ],
-    tools: ["TensorFlow", "Keras", "OpenCV", "NumPy"],
-    color: "red",
-    link: "https://github.com/Harshit0820/CatsVsDogs-Image-classification",
-  },
-  {
-    id: "05",
+    id: "03",
     title: "Car Review",
     eyebrow: "DESKTOP · FULL STACK",
     description:
@@ -1017,7 +958,7 @@ const assistantQuestionBank = [
     tier: 2,
     prompts: ["Which project should I see first?", "Show his best projects", "Where can I see practical work?"],
     answer:
-      "Start with Vera to see Harshit’s work in applied AI, automated machine learning, and conversational dataset exploration. His Global Search work demonstrates enterprise scale and access control, while Web Chat, Cats vs Dogs, and Car Review show his frontend, machine-learning, and full-stack foundations with available source links.",
+      "Start with Global Search to see Harshit’s work at enterprise scale across Elasticsearch, access control, and production observability. Web Chat demonstrates responsive frontend engineering, while Car Review shows Java, persistent storage, authentication, and full-stack application foundations with source links.",
   },
   {
     id: "reliability",
@@ -1025,13 +966,6 @@ const assistantQuestionBank = [
     prompts: ["How does he improve reliability?", "Show production engineering impact", "Does he work on quality and security?"],
     answer:
       "Harshit reduced HTTP 500s by 60%, production alerts by 70%, and resolved 30+ AWS security findings by treating reliability as a product requirement. He also expanded Cypress, Jest, and JUnit automation, improved coverage, and used production telemetry to prevent regressions.",
-  },
-  {
-    id: "earlier",
-    tier: 3,
-    prompts: ["What did he do before Accenture?", "Show earlier experience", "What is his AI background?"],
-    answer:
-      "Before Accenture, Harshit built a multi-language coding and learning platform at MeritHub and authored practical technical coursework. At Samsung R&D, he developed an English–Punjabi speech recognition model using feature extraction and machine learning, reaching 98% transcription accuracy.",
   },
   {
     id: "education",
@@ -1088,6 +1022,12 @@ function createAssistantSuggestions() {
     .slice(0, 7);
 }
 
+function compactLearningSummary(summary, wordLimit = 44) {
+  const words = summary.trim().split(/\s+/);
+  if (words.length <= wordLimit) return summary;
+  return `${words.slice(0, wordLimit).join(" ").replace(/[,:;.]$/, "")}…`;
+}
+
 const navItems = ["home", "experience", "work", "skills", "education", "contact"];
 const mobileNavItems = [
   { id: "home", label: "Home" },
@@ -1110,9 +1050,9 @@ function EmphasizedText({ text }) {
     "MySQL", "PostgreSQL", "DynamoDB", "Redis", "Elasticsearch", "event-driven messaging",
     "low-latency", "circuit breakers", "failure modes", "observability", "access control", "rollback strategies",
     "performance", "responsive behavior", "reusable components", "predictable state",
-    "Vera", "applied AI", "Global Search", "enterprise scale",
+    "Global Search", "enterprise scale",
     "reliability", "Cypress", "Jest", "JUnit", "production telemetry",
-    "Accenture", "MeritHub", "Samsung R&D", "speech recognition", "Bachelor of Engineering", "Thapar Institute",
+    "Accenture", "Bachelor of Engineering", "Thapar Institute",
     "discovery through production", "technical context", "surfacing risks early",
     "smallest safe increment", "user impact", "operational risk", "security", "safe rollback path",
     "root cause", "regression coverage", "production behavior",
@@ -1485,6 +1425,14 @@ function App() {
           >
             {theme === "dark" ? "☀" : "☾"}
           </button>
+          <button
+            className="mobile-availability"
+            onClick={() => scrollTo("contact")}
+            aria-label="Available to talk — go to contact"
+            title="Available to talk"
+          >
+            <span />
+          </button>
         </div>
       </header>
 
@@ -1579,7 +1527,7 @@ function App() {
                 <span className="learning-copy" key={topicIndex} aria-live="polite">
                   <small>CURRENTLY LEARNING · {learningTopics[topicIndex].category}</small>
                   <strong>{learningTopics[topicIndex].title}</strong>
-                  <em>{learningTopics[topicIndex].summary}</em>
+                  <em>{compactLearningSummary(learningTopics[topicIndex].summary)}</em>
                 </span>
               </div>
             </div>
@@ -1692,23 +1640,6 @@ function App() {
               </article>
             ))}
           </div>
-
-          <div className="earlier-grid">
-            {earlierExperience.map((job) => (
-              <article className="earlier-card reveal" key={job.company}>
-                <div className="earlier-card__top">
-                  <span className="earlier-card__mark">{job.mark}</span>
-                  <span>{job.period}</span>
-                </div>
-                <h4>{job.role}</h4>
-                <strong>{job.company}</strong>
-                <p>{job.summary}</p>
-                <div className="tag-row">
-                  {job.tools.map((tool) => <span key={tool}>{tool}</span>)}
-                </div>
-              </article>
-            ))}
-          </div>
         </section>
 
         <section className="section-shell content-section" id="work">
@@ -1797,14 +1728,6 @@ function App() {
                 rel="noreferrer"
               >
                 AWS Cloud Practitioner <small>2026 · View credential ↗</small>
-              </a>
-              <a
-                className="cert-badge"
-                href="https://drive.google.com/file/d/1qR3NRIU3u_V-rygRAADzIiYFQpwwkKrx/view"
-                target="_blank"
-                rel="noreferrer"
-              >
-                Samsung R&D Institute <small>Certificate of Excellence · View ↗</small>
               </a>
               <a
                 className="cert-badge"
@@ -2098,8 +2021,7 @@ const styles = `
   }
 
   .project-grid .reveal:nth-child(even),
-  .skills-grid .reveal:nth-child(even),
-  .earlier-grid .reveal:nth-child(even) {
+  .skills-grid .reveal:nth-child(even) {
     transition-delay: .1s;
   }
 
@@ -2406,6 +2328,23 @@ const styles = `
     border-radius: 50%;
     background: var(--green);
     box-shadow: 0 0 0 5px rgba(129,201,149,.1);
+  }
+
+  .mobile-availability {
+    display: none;
+  }
+
+  .mobile-availability span {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--green);
+    box-shadow: 0 0 0 5px rgba(129,201,149,.12);
+    animation: availability-pulse 2s ease-in-out infinite;
+  }
+
+  @keyframes availability-pulse {
+    50% { box-shadow: 0 0 0 8px rgba(129,201,149,.04); transform: scale(.92); }
   }
 
   .hero {
@@ -2924,7 +2863,7 @@ const styles = `
     content: "";
     position: absolute;
     z-index: 0;
-    filter: brightness(.52) saturate(.7);
+    filter: brightness(.74) saturate(.86);
     pointer-events: none;
   }
 
@@ -2939,7 +2878,7 @@ const styles = `
     height: var(--section-orbit-height, 72px);
     border: 2px solid var(--section-orbit-color, var(--blue));
     border-radius: var(--section-orbit-radius, 999px);
-    opacity: .16;
+    opacity: .28;
     rotate: var(--section-orbit-rotate, -9deg);
     animation: section-orbit-drift 8s ease-in-out infinite;
   }
@@ -2955,7 +2894,7 @@ const styles = `
     height: var(--section-dot-size, 42px);
     border-radius: var(--section-dot-radius, 50%);
     background: var(--section-orbit-color, var(--blue));
-    opacity: .075;
+    opacity: .14;
     animation: section-dot-float 6s ease-in-out infinite;
   }
 
@@ -3170,67 +3109,6 @@ const styles = `
   }
 
   .job-card--green li::before { color: var(--green); }
-
-  .earlier-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 14px;
-    margin-top: 32px;
-  }
-
-  .earlier-card {
-    min-height: 255px;
-    padding: 22px;
-    border: 1px solid var(--line);
-    border-radius: var(--radius-md);
-    background: var(--surface);
-  }
-
-  .earlier-card__top {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 22px;
-    color: var(--muted);
-    font-family: "DM Mono", monospace;
-    font-size: 10px;
-  }
-
-  .earlier-card__mark {
-    display: grid;
-    place-items: center;
-    width: 39px;
-    height: 39px;
-    border-radius: 13px;
-    color: #15171a;
-    background: var(--yellow);
-    font-family: "Manrope", sans-serif;
-    font-size: 15px;
-    font-weight: 800;
-  }
-
-  .earlier-card:nth-child(2) .earlier-card__mark { background: var(--blue); }
-  .earlier-card:nth-child(3) .earlier-card__mark { background: var(--green); }
-
-  .earlier-card h4 {
-    margin: 0 0 5px;
-    font-size: 19px;
-    letter-spacing: -.03em;
-  }
-
-  .earlier-card > strong {
-    color: var(--blue);
-    font-size: 12px;
-    font-weight: 600;
-  }
-
-  .earlier-card > p {
-    min-height: 55px;
-    margin: 14px 0 18px;
-    color: var(--muted);
-    font-size: 12px;
-    line-height: 1.65;
-  }
 
   .tag-row {
     display: flex;
@@ -4172,6 +4050,24 @@ const styles = `
   :root[data-theme="light"] .tag-row span { color: #52565d; background: rgba(32,33,36,.025); }
   :root[data-theme="light"] .skill-list span { color: #3e4249; }
 
+  :root[data-theme="light"] #assistant::before,
+  :root[data-theme="light"] #experience::before,
+  :root[data-theme="light"] #work::before,
+  :root[data-theme="light"] #skills::before,
+  :root[data-theme="light"] #education::before {
+    filter: brightness(.52) saturate(.7);
+    opacity: .16;
+  }
+
+  :root[data-theme="light"] #assistant::after,
+  :root[data-theme="light"] #experience::after,
+  :root[data-theme="light"] #work::after,
+  :root[data-theme="light"] #skills::after,
+  :root[data-theme="light"] #education::after {
+    filter: brightness(.52) saturate(.7);
+    opacity: .075;
+  }
+
   :root[data-theme="light"] .assistant-card {
     border-color: rgba(55,105,174,.2);
     background: #e8f0fc;
@@ -4244,8 +4140,6 @@ const styles = `
     .job-card { grid-template-columns: 100px 1fr; }
     .job-card__meta { grid-column: 2; }
     .job-card__content { grid-column: 2; }
-    .earlier-grid { grid-template-columns: repeat(2, 1fr); }
-    .earlier-card:last-child { grid-column: 1 / -1; }
     .education-item { grid-template-columns: 130px 1fr auto; gap: 22px; }
     .assistant-card { grid-template-columns: 1fr; min-height: 0; }
     .assistant-card__head { padding: 30px; }
@@ -4330,6 +4224,17 @@ const styles = `
     }
     .resume-link span { display: none; }
     .theme-toggle { width: 38px; height: 38px; border-radius: 12px; }
+    .mobile-availability {
+      display: grid;
+      place-items: center;
+      width: 38px;
+      height: 38px;
+      padding: 0;
+      border: 1px solid rgba(129,201,149,.2);
+      border-radius: 12px;
+      background: rgba(129,201,149,.09);
+      cursor: pointer;
+    }
 
     .mobile-nav {
       position: fixed;
@@ -4473,7 +4378,7 @@ const styles = `
     .impact-strip span { font-size: 11px; text-align: center; }
     .section-heading { margin-bottom: 20px; }
     .section-heading h2 { font-size: 40px; }
-    .timeline, .earlier-grid, .project-grid, .skills-grid { gap: 10px; }
+    .timeline, .project-grid, .skills-grid { gap: 10px; }
     .job-card { grid-template-columns: 1fr; gap: 13px; padding: 18px; border-radius: 23px; }
     .job-card__meta, .job-card__content { grid-column: 1; }
     .job-card__meta { flex-direction: column; gap: 6px; padding-top: 0; }
@@ -4485,9 +4390,6 @@ const styles = `
     .job-card__summary { margin: 11px 0 14px; font-size: 14px; line-height: 1.55; }
     .job-card ul { gap: 7px; margin-bottom: 16px; }
     .job-card li { font-size: 13px; line-height: 1.5; }
-    .earlier-grid { grid-template-columns: 1fr; }
-    .earlier-card, .earlier-card:last-child { grid-column: auto; min-height: 0; padding: 18px; }
-    .earlier-card > p { min-height: 0; margin: 10px 0 14px; }
     .project-grid, .skills-grid { grid-template-columns: 1fr; }
     .project-card { min-height: auto; padding: 18px; border-radius: 23px; }
     .project-card:last-child:nth-child(odd) { grid-column: auto; }
@@ -4511,14 +4413,16 @@ const styles = `
     .cert-badge { width: 100%; min-width: 0; }
     .education-item,
     .education-item--primary {
-      grid-template-columns: 1fr;
-      gap: 8px;
+      grid-template-columns: 78px minmax(0, 1fr) auto;
+      gap: 12px;
       min-height: 0;
-      padding: 18px;
+      padding: 16px;
     }
-    .education-item p { font-size: 13px; line-height: 1.5; }
-    .education-item__year { font-size: 11px; }
-    .education-item__score { justify-self: start; font-size: 10px; }
+    .education-item__type { font-size: 8px; letter-spacing: .09em; }
+    .education-item h3 { margin: 5px 0 4px; font-size: 18px; line-height: 1.22; }
+    .education-item p { font-size: 11px; line-height: 1.4; }
+    .education-item__year { font-size: 10px; }
+    .education-item__score { padding: 7px 8px; font-size: 9px; }
     .assistant-card { min-height: 0; border-radius: 27px; }
     .assistant-section { padding-top: 54px; }
     .assistant-card__head {
